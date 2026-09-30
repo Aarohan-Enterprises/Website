@@ -3,31 +3,19 @@
   <!-- Main Pages -->
   <url>
     <loc>https://pinecoder.in/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://pinecoder.in/about/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://pinecoder.in/pricing/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://pinecoder.in/contact/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://pinecoder.in/assessment/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -35,25 +23,19 @@
   <!-- Legal Pages -->
   <url>
     <loc>https://pinecoder.in/privacy-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>
   <url>
     <loc>https://pinecoder.in/terms-of-service/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.30</priority>
-  </url>
-  <url>
-    <loc>https://pinecoder.in/disclaimer/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>
   <url>
     <loc>https://pinecoder.in/refund-policy/</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>

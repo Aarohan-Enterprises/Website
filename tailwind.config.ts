@@ -9,28 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Editorial finance palette — FT-salmon paper, warm ink, pine accent.
-        paper: '#FBEDE0',        // base salmon page
-        band: '#F4DFCD',         // deeper salmon for alternating sections
-        surface: '#FFF8F1',      // raised cards / inputs
-        ink: '#221A12',          // primary text (warm near-black)
-        'ink-soft': '#6E5C4B',   // secondary text
-        'ink-faint': '#9C8975',  // captions / tertiary
-        rule: '#E3D0BB',         // hairline rules & borders
-        'rule-strong': '#CDB295',
-        pine: '#0E5C4A',         // single accent — deep pine teal
-        'pine-dark': '#0A4236',
-        'pine-tint': '#E2ECE7',  // accent wash background
-        // Market semantics — used ONLY for real prices / P&L.
-        up: '#1B7A4B',
-        down: '#BE3A28',
+        // Terminal palette — warm charcoal canvas, amber accent, mono voice.
+        paper: '#14120E',        // base page (warm near-black)
+        band: '#0F0D09',         // darker band for alternating sections
+        surface: '#1D1A14',      // raised cards / inputs
+        ink: '#E7E0D1',          // primary text (warm off-white)
+        'ink-soft': '#A79F8D',   // secondary text
+        'ink-faint': '#726B5C',  // captions / tertiary
+        rule: '#2C2820',         // hairline rules & borders
+        'rule-strong': '#3C3629',
+        pine: '#F2B04C',         // single accent — amber (token name kept)
+        'pine-dark': '#D9922E',
+        'pine-tint': '#2A2416',  // accent wash background
+        // Status semantics — used for live/console states.
+        up: '#7BD88F',
+        down: '#E5734E',
         // Legacy aliases kept so older references degrade gracefully.
-        primary: '#221A12',
-        secondary: '#0E5C4A',
-        accent: '#1B7A4B',
+        primary: '#E7E0D1',
+        secondary: '#F2B04C',
+        accent: '#7BD88F',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
+        display: ['var(--font-mono)', 'ui-monospace', 'monospace'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },

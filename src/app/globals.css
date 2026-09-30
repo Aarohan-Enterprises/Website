@@ -17,7 +17,7 @@
   h1, h2, h3, h4 {
     font-family: theme('fontFamily.display');
     color: theme('colors.ink');
-    letter-spacing: -0.01em;
+    letter-spacing: -0.022em;
   }
 
   /* Tabular, lining figures everywhere numbers carry meaning. */
@@ -82,7 +82,6 @@
 
   /* Accent on a phrase — replaces the old gradient text. */
   .accent-ink {
-    font-style: italic;
     color: theme('colors.pine');
   }
 
@@ -209,9 +208,15 @@
 }
 
 @layer utilities {
-  /* Market data semantics — only for real prices / P&L. */
+  /* Market data / console semantics. */
   .data-up { color: theme('colors.up'); }
   .data-down { color: theme('colors.down'); }
+
+  /* Terminal dot-grid — a faint schematic backdrop for the hero. */
+  .hero-dotgrid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(231, 224, 209, 0.05) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
 }
 
 /* Defined here (not via Tailwind's animate-* utility) so the keyframes are

@@ -12,8 +12,9 @@ export function Navbar() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href.split('#')[0]);
+    const base = href.split('#')[0];
+    if (base === '/') return pathname === '/';
+    return pathname.startsWith(base);
   };
 
   return (
@@ -46,7 +47,7 @@ export function Navbar() {
                 </Link>
               ))}
               <Link href="/contact" className="btn-primary !py-2.5 !px-5">
-                Get Started
+                Start a project
               </Link>
             </nav>
 
@@ -84,7 +85,7 @@ export function Navbar() {
               onClick={() => setIsMobileOpen(false)}
               className="btn-primary w-full mt-3"
             >
-              Get Started
+              Start a project
             </Link>
           </div>
         </div>

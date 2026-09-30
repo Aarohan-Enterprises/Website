@@ -33,8 +33,8 @@ export function Footer() {
             </div>
             <p className="eyebrow text-ink-faint mb-3">pinecoder.in</p>
             <p className="text-sm text-ink-soft leading-relaxed max-w-xs">
-              An Indian studio that turns trading logic into running code — bots, Pine Script,
-              and screeners built to your exact rules.
+              A software development studio in India — we design, build, and ship web apps,
+              tools, and cloud systems, from idea to production.
             </p>
           </div>
 

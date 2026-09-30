@@ -15,7 +15,7 @@ export function BackToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className={`fixed bottom-8 right-8 w-11 h-11 bg-ink text-paper flex items-center justify-center transition-all duration-300 hover:bg-pine z-50 ${
+      className={`fixed bottom-8 right-8 w-11 h-11 bg-surface text-ink border border-rule-strong flex items-center justify-center transition-all duration-300 hover:border-pine hover:text-pine z-50 ${
         visible ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}
       aria-label="Back to top"

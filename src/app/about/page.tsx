@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
 import { MainLayout } from '@/components/layouts';
-import { Users, Award, Cloud, Code, Shield, TrendingUp, Handshake, Lightbulb, Check, ArrowRight } from 'lucide-react';
+import { Users, Cloud, Code, Layers, Shield, Rocket, Handshake, Lightbulb, Check, ArrowRight } from 'lucide-react';
 import { LinkedInIcon, WhatsAppIcon } from '@/components/ui/BrandIcons';
 import { stats, certifications, coreValues, whyChooseUs, founder } from '@/data/about';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Us - Automated Algorithmic Trading Experts',
-  description: "Learn about Aarohan Enterprises - India's leading automated algorithmic trading development company. Meet our team of experts who transform trading ideas into profitable algorithms.",
+  title: 'About Us — Software Development Studio',
+  description: "Aarohan Enterprises is a software development studio in Nagpur, India. Meet the engineers who design, build, and ship web apps, browser extensions, desktop apps, and cloud systems.",
   alternates: { canonical: 'https://pinecoder.in/about/' },
   openGraph: {
-    title: 'About Us - Aarohan Enterprises | Automated Algorithmic Trading Experts',
-    description: "Learn about Aarohan Enterprises - India's leading automated algorithmic trading development company.",
+    title: 'About Us — Aarohan Enterprises | Software Development Studio',
+    description: "The software studio behind a dozen shipped products — web apps, extensions, desktop tools, and cloud systems.",
     images: ['https://pinecoder.in/og-image.jpg'],
   },
 };
 
 const iconMap: Record<string, React.ElementType> = {
-  Shield, TrendingUp, Handshake, Lightbulb, Award, Cloud, Code,
+  Shield, Rocket, Handshake, Lightbulb, Cloud, Code, Layers,
 };
 
 export default function AboutPage() {
@@ -27,13 +27,13 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="border-b border-ink">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16 max-w-3xl">
-          <p className="eyebrow mb-4 flex items-center gap-2"><Users size={13} /> The team behind Aarohan Enterprises</p>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-medium text-ink">
-            We code. <span className="accent-ink">You trade.</span>
+          <p className="eyebrow mb-4 flex items-center gap-2"><Users size={13} /> The studio behind Aarohan Enterprises</p>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-ink">
+            We build the software. <span className="accent-ink">You run with it.</span>
           </h1>
           <p className="mt-5 text-lg text-ink-soft">
-            We&apos;re software engineers on a mission to make algorithmic trading accessible to
-            everyone in India — turning a documented strategy into a system that runs itself.
+            Aarohan Enterprises is a software development studio in Nagpur, India. We turn ideas
+            and rough sketches into web apps, tools, and cloud systems that ship — and keep running.
           </p>
         </div>
       </section>
@@ -57,13 +57,13 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl">
           <div>
             <p className="eyebrow mb-4">Our story</p>
-            <h2 className="font-display text-3xl md:text-4xl font-medium text-ink mb-6">
-              Built by engineers, for traders.
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-ink mb-6">
+              Built by engineers who ship.
             </h2>
             <div className="space-y-4 text-ink-soft leading-relaxed">
-              <p>Aarohan Enterprises was born from a simple observation: talented traders across India had profitable strategies but lacked the technical expertise to automate them.</p>
-              <p>Built by software engineers with hands-on experience in algorithmic platforms and real-time market data systems, we bring institutional-grade technology to retail traders.</p>
-              <p>Today, we&apos;re the trusted partner for traders looking to automate their edge — from Pine Script indicators to full-stack trading bots.</p>
+              <p>Aarohan Enterprises started with a simple habit: when we needed a tool, we built it — and shipped it. That habit grew into a studio.</p>
+              <p>We&apos;re software engineers who care about the parts that make software last: clean code, real deployments, monitoring, and a proper handover. We&apos;ve shipped web platforms, SaaS products, Chrome extensions, and desktop apps across India and beyond.</p>
+              <p>Today we build for founders and teams who need something real in production — not a slide, not a throwaway prototype, but working software their customers can actually use.</p>
             </div>
             <div className="mt-8 flex flex-wrap gap-2">
               {certifications.map((cert) => {
@@ -77,26 +77,26 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Code tear sheet */}
+          {/* Deploy log tear sheet */}
           <div className="card">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-rule">
               <span className="w-2.5 h-2.5 rounded-full border border-rule-strong" />
               <span className="w-2.5 h-2.5 rounded-full border border-rule-strong" />
               <span className="w-2.5 h-2.5 rounded-full border border-rule-strong" />
-              <span className="eyebrow text-ink-faint ml-2">strategy.pine</span>
+              <span className="eyebrow text-ink-faint ml-2">deploy.log</span>
             </div>
             <pre className="p-5 font-mono text-xs leading-relaxed text-ink-soft overflow-x-auto">
               <code>
-                <span className="text-ink-faint">{'//@version=5'}</span>{'\n'}
-                <span className="text-pine">strategy</span>(<span className="text-ink">&quot;Aarohan Strategy&quot;</span>){'\n'}
-                <span className="text-ink-faint">{'// your edge, automated'}</span>{'\n'}
-                <span className="text-pine">if</span> buyCondition{'\n'}
-                {'    '}<span className="text-ink">strategy.entry</span>(<span className="text-ink">&quot;Long&quot;</span>){'\n'}
+                <span className="text-pine">$</span> git push origin main{'\n'}
+                <span className="text-ink-faint">→ install ✓  typecheck ✓  build ✓</span>{'\n'}
+                <span className="text-ink-faint">→ 48 tests passed</span>{'\n'}
+                <span className="text-pine">✓</span> deployed to production{'\n'}
+                <span className="text-ink">  live · yourapp.com · 14.2s</span>{'\n'}
               </code>
             </pre>
             <div className="border-t border-rule px-5 py-3 flex items-center justify-between">
               <span className="eyebrow text-ink-faint">In production</span>
-              <span className="font-mono text-sm text-pine">2+ years</span>
+              <span className="font-mono text-sm text-pine">12+ products</span>
             </div>
           </div>
         </div>
@@ -109,16 +109,15 @@ export default function AboutPage() {
             <div className="bg-surface p-8">
               <p className="eyebrow mb-4">Mission</p>
               <p className="font-display text-xl text-ink leading-snug">
-                Democratise algorithmic trading — making it accessible, affordable, and
-                profitable for every trader in India. Technology should empower traders,
-                not complicate their journey.
+                Turn good ideas into software that actually ships — well-built, well-documented,
+                and owned entirely by the people we build it for.
               </p>
             </div>
             <div className="bg-surface p-8">
               <p className="eyebrow mb-4">Vision</p>
               <p className="font-display text-xl text-ink leading-snug">
-                Become India&apos;s most trusted algorithmic trading partner — setting new
-                standards in strategy development, risk management, and automated execution.
+                Be the studio teams trust to take an idea from sketch to production — and to keep
+                it running long after launch day.
               </p>
             </div>
           </div>
@@ -169,7 +168,7 @@ export default function AboutPage() {
 
       {/* Why Choose Us */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 max-w-4xl">
-        <p className="eyebrow mb-8">Why traders choose us</p>
+        <p className="eyebrow mb-8">Why teams choose us</p>
         <div className="grid md:grid-cols-2 border-t border-rule">
           {whyChooseUs.map((item) => (
             <div key={item.title} className="flex items-start gap-4 py-6 border-b border-rule md:odd:border-r md:odd:pr-8 md:even:pl-8 border-ink/10">
@@ -184,15 +183,15 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-ink bg-ink text-paper">
+      <section className="border-t border-ink bg-band">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-medium text-paper">Ready to automate your trading?</h2>
-          <p className="mt-4 text-paper/70">Join the traders who trust Aarohan Enterprises to build their edge.</p>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-ink">Ready to build something?</h2>
+          <p className="mt-4 text-ink-soft">Join the teams who trust Aarohan Enterprises to design, build, and ship their software.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-paper text-ink font-mono text-sm uppercase tracking-wider px-7 py-4 hover:bg-pine hover:text-paper transition-colors">
-              Get started <ArrowRight size={16} />
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-pine text-paper font-mono text-sm uppercase tracking-wider px-7 py-4 hover:bg-pine-dark transition-colors">
+              Start a project <ArrowRight size={16} />
             </Link>
-            <a href="https://wa.me/917499462967" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-paper/40 text-paper font-mono text-sm uppercase tracking-wider px-7 py-4 hover:border-paper transition-colors">
+            <a href="https://wa.me/917499462967" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-rule-strong text-ink font-mono text-sm uppercase tracking-wider px-7 py-4 hover:border-ink hover:text-pine transition-colors">
               <WhatsAppIcon size={16} /> WhatsApp
             </a>
           </div>

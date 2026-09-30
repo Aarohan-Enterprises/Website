@@ -1,44 +1,44 @@
 export const stats = [
-  { value: '2+', label: 'Years Experience' },
-  { value: '50+', label: 'Strategies Built' },
-  { value: '98%', label: 'Client Satisfaction' },
-  { value: '24/7', label: 'Support Available' },
+  { value: '12+', label: 'Products Shipped' },
+  { value: '2+', label: 'Years Building' },
+  { value: '100%', label: 'Code Ownership' },
+  { value: '24/7', label: 'Systems Live' },
 ];
 
 export const certifications = [
-  { icon: 'Award', label: 'NISM Certified' },
-  { icon: 'Cloud', label: 'Cloud Infrastructure' },
-  { icon: 'Code', label: 'Pine Script Experts' },
+  { icon: 'Cloud', label: 'AWS Cloud' },
+  { icon: 'Layers', label: 'Full-Stack Web' },
+  { icon: 'Code', label: 'Apps & Extensions' },
 ];
 
 export const coreValues = [
   {
-    icon: 'Shield',
-    title: 'Trust & Security',
-    description: 'Your strategies protected with bank-grade security',
+    icon: 'Rocket',
+    title: 'Ship, don’t stall',
+    description: 'Working software in production beats a perfect plan on paper.',
   },
   {
-    icon: 'TrendingUp',
-    title: 'Performance First',
-    description: 'Optimized for maximum reliability and speed',
+    icon: 'Shield',
+    title: 'You own your stack',
+    description: 'Source, repos, and cloud accounts stay yours. No lock-in, ever.',
   },
   {
     icon: 'Handshake',
-    title: 'Client Success',
-    description: 'Partners in your trading journey',
+    title: 'Straight talk',
+    description: 'Honest scope, honest timelines, honest status — every week.',
   },
   {
     icon: 'Lightbulb',
-    title: 'Innovation',
-    description: 'Evolving with latest tech and markets',
+    title: 'Built to last',
+    description: 'Clean, documented code the next engineer can pick up cold.',
   },
 ];
 
 export const whyChooseUs = [
-  { title: 'No Hidden Fees', description: 'Transparent pricing with milestone-based payments' },
-  { title: 'Source Code Ownership', description: 'You own 100% of the code we write for you' },
-  { title: 'Indian Market Expertise', description: 'Deep knowledge of NSE, BSE, and Indian brokers' },
-  { title: 'Ongoing Support', description: 'Dedicated support even after project delivery' },
+  { title: 'Fixed, transparent quotes', description: 'A clear, milestone-based quote after scoping — no surprise invoices.' },
+  { title: 'You own everything', description: '100% of the source code, repositories, and cloud accounts are yours.' },
+  { title: 'We ship to production', description: 'We don’t stop at a demo — we deploy, hand over, and keep it running.' },
+  { title: 'Long-term support', description: 'Dedicated support and maintenance well after launch day.' },
 ];
 
 export const founder = {
@@ -46,6 +46,6 @@ export const founder = {
   title: 'Software Engineer',
   badge: 'Founder',
   image: 'https://github.com/chaitanyamurarka.png',
-  bio: 'I build reliable trading systems — software that runs unattended, holds up in live market conditions, and does exactly what the strategy says. From Pine Script indicators to full Python and FastAPI execution stacks, my focus is code you can trust with real capital.',
+  bio: 'I build software that runs unattended and holds up in production — from full-stack web apps and Go backends to browser extensions, desktop apps, and cloud systems on AWS. My focus is code you can trust with real users: shipped, monitored, and maintained, not just demoed.',
   linkedin: 'https://www.linkedin.com/in/chaitanya-murarka/',
 };

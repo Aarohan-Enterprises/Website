@@ -11,7 +11,7 @@ export function FooterSimple() {
           <div className="flex gap-6 uppercase tracking-wider">
             <Link href="/privacy-policy" className="text-ink-faint hover:text-pine transition-colors">Privacy</Link>
             <Link href="/terms-of-service" className="text-ink-faint hover:text-pine transition-colors">Terms</Link>
-            <Link href="/disclaimer" className="text-ink-faint hover:text-pine transition-colors">Disclaimer</Link>
+            <Link href="/refund-policy" className="text-ink-faint hover:text-pine transition-colors">Refund</Link>
           </div>
         </div>
       </div>
