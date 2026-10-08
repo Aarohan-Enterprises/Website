@@ -25,7 +25,7 @@ export const tools: Tool[] = [
     icon: SlidersVertical,
     name: 'Loadout',
     tag: 'Free · ₹199 a month',
-    href: 'https://loadout.pinecoder.in',
+    href: 'https://alertsync.in/loadout',
     description:
       "Chrome extension that saves a TradingView indicator's settings as a named preset and puts them back in one click.",
     features: ['Every indicator, one line each', 'Drift detection on live charts', 'No account, nothing auto-renews'],
