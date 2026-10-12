@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import { MainLayout } from '@/components/layouts';
 import { BackToTop } from '@/components/ui';
@@ -6,12 +7,11 @@ import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 import { tools } from '@/data/tools';
 import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/tools/', {
   title: 'Tools - Software We Built for Our Own Desk',
   description:
     'Our tools: AlertSync, Loadout, Volatility Screener, GroupSync, PDF Editor, Section63, and Meridian. Software we built for our own workflow, opened up for yours.',
-  alternates: { canonical: 'https://pinecoder.in/tools/' },
-};
+});
 
 export default function ToolsPage() {
   return (

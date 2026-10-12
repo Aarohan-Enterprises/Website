@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { LegalPageLayout } from '@/components/legal/LegalPageLayout';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/terms-of-service/', {
   title: 'Terms of Service',
   description: 'Read the terms of service for Aarohan Enterprises. Terms and conditions for using our automated algorithmic trading services.',
-  alternates: { canonical: 'https://pinecoder.in/terms-of-service/' },
-};
+});
 
 export default function TermsOfServicePage() {
   return (

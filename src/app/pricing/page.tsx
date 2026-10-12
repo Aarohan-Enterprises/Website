@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Link from 'next/link';
 import { MainLayout } from '@/components/layouts';
 import { FAQAccordion } from '@/components/ui';
@@ -7,11 +8,10 @@ import { pricingPlans, comparisonRows } from '@/data/pricing';
 import { pricingFAQs } from '@/data/faq';
 import { Check, Minus, ArrowRight, Link2, Code2, Settings, Info, Shield, RotateCcw, Headset } from 'lucide-react';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/pricing/', {
   title: 'Pricing - Trading Automation & Pine Script Development',
   description: 'Transparent pricing for Pine Script development and broker integration services. Starting from ₹5,999. Actual quotation provided after understanding scope of work.',
-  alternates: { canonical: 'https://pinecoder.in/pricing/' },
-};
+});
 
 const planIcons: Record<string, React.ElementType> = {
   'Broker Integration': Link2,

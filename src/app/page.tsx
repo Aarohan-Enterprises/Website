@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { pageMetadata } from '@/lib/metadata';
 import { MainLayout } from '@/components/layouts';
 import { BackToTop, LiveTerminal } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
@@ -6,6 +7,9 @@ import { featuredTools } from '@/data/tools';
 import {
   ArrowRight, ArrowUpRight, Bot, Code2, Filter, Check,
 } from 'lucide-react';
+
+// Home keeps the root layout's default title/description; this adds the canonical + og:url.
+export const metadata = pageMetadata('/');
 
 const services = [
   {

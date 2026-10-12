@@ -4,6 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import { GA_ID } from '@/lib/analytics';
 import { siteConfig, organizationSchema, localBusinessSchema } from '@/data/seo';
+import { DEFAULT_TITLE, DEFAULT_SOCIAL_DESCRIPTION } from '@/lib/metadata';
 
 // Editorial serif display — the masthead voice.
 const fraunces = Fraunces({
@@ -29,7 +30,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Aarohan Enterprises - Professional Trading Strategy Automation Services',
+    default: DEFAULT_TITLE,
     template: '%s | Aarohan Enterprises',
   },
   description: siteConfig.description,
@@ -38,17 +39,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: 'website',
-    url: siteConfig.url,
-    title: 'Aarohan Enterprises - Professional Trading Strategy Automation Services',
-    description: "Transform your trading ideas into automated strategies. India's premier automated algorithmic trading development company.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_SOCIAL_DESCRIPTION,
     images: [siteConfig.ogImage],
     siteName: siteConfig.name,
     locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aarohan Enterprises - Professional Trading Strategy Automation Services',
-    description: "Transform your trading ideas into automated strategies. India's premier automated algorithmic trading development company.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_SOCIAL_DESCRIPTION,
     images: [siteConfig.ogImage],
   },
   icons: {

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { LegalPageLayout } from '@/components/legal/LegalPageLayout';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/refund-policy/', {
   title: 'Refund Policy',
   description: 'Read the refund policy for Aarohan Enterprises. Milestone-based payment approach ensures transparency and satisfaction.',
-  alternates: { canonical: 'https://pinecoder.in/refund-policy/' },
-};
+});
 
 export default function RefundPolicyPage() {
   return (

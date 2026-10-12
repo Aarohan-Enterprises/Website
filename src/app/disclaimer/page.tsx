@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { LegalPageLayout } from '@/components/legal/LegalPageLayout';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/disclaimer/', {
   title: 'Disclaimer',
   description: 'Disclaimer for Aarohan Enterprises. Trading involves risk, and past performance is not indicative of future results.',
-  alternates: { canonical: 'https://pinecoder.in/disclaimer/' },
-};
+});
 
 export default function DisclaimerPage() {
   return (

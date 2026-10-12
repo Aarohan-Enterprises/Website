@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { MainLayout } from '@/components/layouts';
 import { Users, Award, Cloud, Code, Shield, TrendingUp, Handshake, Lightbulb, Check, ArrowRight } from 'lucide-react';
 import { LinkedInIcon, WhatsAppIcon } from '@/components/ui/BrandIcons';
@@ -6,16 +7,15 @@ import { stats, certifications, coreValues, whyChooseUs, founder } from '@/data/
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/about/', {
   title: 'About Us - Automated Algorithmic Trading Experts',
   description: "Learn about Aarohan Enterprises - India's leading automated algorithmic trading development company. Meet our team of experts who transform trading ideas into profitable algorithms.",
-  alternates: { canonical: 'https://pinecoder.in/about/' },
   openGraph: {
     title: 'About Us - Aarohan Enterprises | Automated Algorithmic Trading Experts',
     description: "Learn about Aarohan Enterprises - India's leading automated algorithmic trading development company.",
     images: ['https://pinecoder.in/og-image.jpg'],
   },
-};
+});
 
 const iconMap: Record<string, React.ElementType> = {
   Shield, TrendingUp, Handshake, Lightbulb, Award, Cloud, Code,

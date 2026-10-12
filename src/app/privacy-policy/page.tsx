@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { LegalPageLayout } from '@/components/legal/LegalPageLayout';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata('/privacy-policy/', {
   title: 'Privacy Policy',
   description: 'Read the privacy policy for Aarohan Enterprises. We are committed to protecting your data and privacy.',
-  alternates: { canonical: 'https://pinecoder.in/privacy-policy/' },
-};
+});
 
 export default function PrivacyPolicyPage() {
   return (
