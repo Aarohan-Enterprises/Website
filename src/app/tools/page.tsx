@@ -10,7 +10,7 @@ import { ArrowRight, ArrowUpRight, Check } from 'lucide-react';
 export const metadata: Metadata = pageMetadata('/tools/', {
   title: 'Tools - Software We Built for Our Own Desk',
   description:
-    'Our tools: AlertSync, Loadout, Volatility Screener, GroupSync, PDF Editor, Section63, and Meridian. Software we built for our own workflow, opened up for yours.',
+    'Our tools: AlertSync, Loadout, Volatility Screener, GroupSync, PDF Editor, ChatIntoPDF, Section63, and Meridian. Software we built for our own workflow, opened up for yours.',
 });
 
 export default function ToolsPage() {
@@ -25,7 +25,7 @@ export default function ToolsPage() {
           </h1>
           <p className="mt-5 text-lg text-ink-soft">
             Software we built for our own workflow, opened up for yours. Each one does a
-            single job properly — most are free, none get in your way.
+            single job properly — some are free, some have paid plans, none get in your way.
           </p>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  Bell, BarChart3, Users, FileText, ShieldCheck, Clock, SlidersVertical,
+  Bell, BarChart3, Users, FileText, MessageSquareText, ShieldCheck, Clock, SlidersVertical,
 } from 'lucide-react';
 
 export interface Tool {
@@ -24,7 +24,7 @@ export const tools: Tool[] = [
   {
     icon: SlidersVertical,
     name: 'Loadout',
-    tag: 'Free · ₹199 a month',
+    tag: 'Free & paid plans',
     href: 'https://alertsync.in/loadout',
     description:
       "Chrome extension that saves a TradingView indicator's settings as a named preset and puts them back in one click.",
@@ -50,10 +50,11 @@ export const tools: Tool[] = [
   {
     icon: FileText,
     name: 'PDF Editor',
-    tag: 'Free · no signup',
+    tag: 'Free tools · paid editor',
     href: 'https://pdf2.in',
-    description: 'Browser-based PDF tools — merge, split, rotate, compress, and convert.',
-    features: ['Merge, split & rotate', 'Compress & watermark', 'PDF & DOCX conversion'],
+    description:
+      'Browser-based PDF tools — merge, split, rotate, compress and convert are free; the full PDF editor is pay-per-use.',
+    features: ['Merge, split & rotate free', 'Compress & convert free', 'Edit PDF: pay per file or weekly pass'],
   },
   {
     icon: ShieldCheck,
@@ -63,6 +64,15 @@ export const tools: Tool[] = [
     description:
       'Turns a WhatsApp chat export into a Section 63 (BSA 2023) certified exhibit for Indian courts.',
     features: ['s.63(4) certificate + SHA-256', 'Media hashed & reproduced', 'Read every page before you pay'],
+  },
+  {
+    icon: MessageSquareText,
+    name: 'ChatIntoPDF',
+    tag: 'From $1.99 per chat',
+    href: 'https://chatintopdf.com',
+    description:
+      'Turns a WhatsApp chat export into a clean, shareable PDF — pick a style, preview it free, pay only for the chats you keep.',
+    features: ['4 PDF styles, photos inline', 'Free preview before you pay', 'Kept in your account for a year'],
   },
   {
     icon: Clock,
