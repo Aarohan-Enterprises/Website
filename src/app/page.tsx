@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { MainLayout } from '@/components/layouts';
-import { BackToTop, LiveTerminal } from '@/components/ui';
+import { BackToTop, LiveTerminal, ProductCard } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 import {
   ArrowRight, ArrowUpRight, Globe, Puzzle, Cloud, Check,
@@ -81,6 +81,7 @@ const work = [
   {
     icon: SlidersVertical,
     name: 'Loadout',
+    internationalOnly: true,
     tag: 'Free · paid plans · international only',
     href: 'https://loadout.pinecoder.in',
     description:
@@ -99,6 +100,7 @@ const work = [
   {
     icon: Webhook,
     name: 'AlertSync',
+    internationalOnly: true,
     tag: 'Free & paid · international only',
     href: 'https://alertsync.in',
     description: 'A webhook relay that forwards TradingView (or any) alerts to Telegram in under 100ms.',
@@ -248,11 +250,11 @@ export default function HomePage() {
             {work.map((t) => {
               const Icon = t.icon;
               return (
-                <a
+                <ProductCard
                   key={t.name}
                   href={t.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  name={t.name}
+                  internationalOnly={'internationalOnly' in t}
                   className="group bg-surface p-7 flex flex-col hover:bg-pine-tint transition-colors"
                 >
                   <div className="flex items-center justify-between mb-6">
@@ -271,7 +273,7 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                </a>
+                </ProductCard>
               );
             })}
           </div>

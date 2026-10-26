@@ -5,3 +5,4 @@ export { SectionBadge } from './SectionBadge';
 export { Ticker } from './Ticker';
 export { LiveTerminal } from './LiveTerminal';
 export { WhatsAppIcon, LinkedInIcon } from './BrandIcons';
+export { ProductCard } from './ProductCard';
