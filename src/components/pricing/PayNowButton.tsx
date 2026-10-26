@@ -10,7 +10,7 @@ interface PayNowButtonProps {
   planSlug: string;
 }
 
-export function PayNowButton({ planName, planSlug }: PayNowButtonProps) {
+export function PayNowButton({ planSlug }: PayNowButtonProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -42,11 +42,6 @@ export function PayNowButton({ planName, planSlug }: PayNowButtonProps) {
             </button>
             <p className="eyebrow mb-3">Online payments</p>
             <h3 id="paynow-title" className="font-display text-2xl text-ink mb-3">Coming soon</h3>
-            <p className="text-sm text-ink-soft">
-              We&apos;re building a seamless online payment experience and it isn&apos;t live yet.
-              To get started with <strong className="text-ink">{planName}</strong>, tell us about your
-              scope and we&apos;ll send you a quote and payment details directly.
-            </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <Link
                 href={`/contact?plan=${planSlug}`}
