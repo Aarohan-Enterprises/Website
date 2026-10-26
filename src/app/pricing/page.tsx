@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { MainLayout } from '@/components/layouts';
 import { FAQAccordion } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
+import { PayNowButton } from '@/components/pricing/PayNowButton';
 import { pricingPlans, comparisonRows } from '@/data/pricing';
 import { pricingFAQs } from '@/data/faq';
 import { Check, Minus, ArrowRight, Link2, Code2, Settings, Info, Shield, RotateCcw, Headset } from 'lucide-react';
@@ -79,9 +80,13 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
+                <div className="mt-auto flex flex-col gap-3">
+                {plan.price !== 'Custom' && (
+                  <PayNowButton planName={plan.name} planSlug={plan.ctaLink.split('plan=')[1] ?? ''} />
+                )}
                 <Link
                   href={plan.ctaLink}
-                  className={`mt-auto text-center font-mono text-sm uppercase tracking-wider py-3.5 transition-colors ${
+                  className={`text-center font-mono text-sm uppercase tracking-wider py-3.5 transition-colors ${
                     plan.popular
                       ? 'bg-pine text-paper hover:bg-pine-dark'
                       : 'border border-ink text-ink hover:bg-ink hover:text-paper'
@@ -89,6 +94,7 @@ export default function PricingPage() {
                 >
                   {plan.ctaText}
                 </Link>
+                </div>
               </div>
             );
           })}
