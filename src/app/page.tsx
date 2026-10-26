@@ -36,14 +36,6 @@ const services = [
 
 const work = [
   {
-    icon: Webhook,
-    name: 'AlertSync',
-    tag: 'Free & paid',
-    href: 'https://alertsync.in',
-    description: 'A webhook relay that forwards TradingView (or any) alerts to Telegram in under 100ms.',
-    features: ['Sub-100ms delivery', 'Zero-config webhooks', 'Full audit trail'],
-  },
-  {
     icon: BarChart3,
     name: 'Volatility Screener',
     tag: 'Free',
@@ -89,7 +81,7 @@ const work = [
   {
     icon: SlidersVertical,
     name: 'Loadout',
-    tag: 'Free · ₹199 a month',
+    tag: 'Free · paid plans · international only',
     href: 'https://loadout.pinecoder.in',
     description:
       "Chrome extension that saves a chart indicator's settings as a named preset and restores them in one click.",
@@ -103,6 +95,14 @@ const work = [
     description:
       'Gaming-café management platform — a Go + Postgres backend, a Flutter console, and a Windows lock client.',
     features: ['Prepaid & postpaid wallets', 'Session & seat control', 'Multi-cafe tenancy'],
+  },
+  {
+    icon: Webhook,
+    name: 'AlertSync',
+    tag: 'Free & paid · international only',
+    href: 'https://alertsync.in',
+    description: 'A webhook relay that forwards TradingView (or any) alerts to Telegram in under 100ms.',
+    features: ['Sub-100ms delivery', 'Zero-config webhooks', 'Full audit trail'],
   },
 ];
 
