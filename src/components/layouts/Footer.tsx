@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SectionLink } from '@/components/ui/SectionLink';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { footerQuickLinks, footerResourceLinks, footerLegalLinks } from '@/data/navigation';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
@@ -10,9 +11,9 @@ function FooterColumn({ title, links }: { title: string; links: { label: string;
       <ul className="space-y-2.5">
         {links.map((link) => (
           <li key={link.href}>
-            <Link href={link.href} className="text-sm text-ink-soft hover:text-pine transition-colors">
+            <SectionLink href={link.href} className="text-sm text-ink-soft hover:text-pine transition-colors">
               {link.label}
-            </Link>
+            </SectionLink>
           </li>
         ))}
       </ul>

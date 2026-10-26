@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { MainLayout } from '@/components/layouts';
-import { BackToTop, LiveTerminal, ProductCard } from '@/components/ui';
+import { BackToTop, LiveTerminal, ProductCard, SectionLink } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 import {
   ArrowRight, ArrowUpRight, Globe, Puzzle, Cloud, Check,
@@ -154,9 +154,9 @@ export default function HomePage() {
                   Start a project
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/#work" className="btn-ghost">
+                <SectionLink href="/#work" className="btn-ghost">
                   See our work
-                </Link>
+                </SectionLink>
               </div>
             </div>
 
@@ -227,9 +227,9 @@ export default function HomePage() {
         </div>
 
         <div className="mt-10">
-          <Link href="/#work" className="link-underline font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2">
+          <SectionLink href="/#work" className="link-underline font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2">
             See what we&apos;ve shipped <ArrowRight size={15} />
-          </Link>
+          </SectionLink>
         </div>
       </section>
 

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { SectionLink } from '@/components/ui/SectionLink';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '@/data/navigation';
@@ -34,7 +35,7 @@ export function Navbar() {
 
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <Link
+                <SectionLink
                   key={link.href}
                   href={link.href}
                   className={`font-mono text-xs uppercase tracking-widest transition-colors ${
@@ -44,7 +45,7 @@ export function Navbar() {
                   }`}
                 >
                   {link.label}
-                </Link>
+                </SectionLink>
               ))}
               <Link href="/contact" className="btn-primary !py-2.5 !px-5">
                 Start a project
@@ -69,7 +70,7 @@ export function Navbar() {
         <div className="md:hidden border-b border-ink bg-paper animate-slide-down">
           <div className="container mx-auto px-4 py-4 space-y-1">
             {navLinks.map((link) => (
-              <Link
+              <SectionLink
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileOpen(false)}
@@ -78,7 +79,7 @@ export function Navbar() {
                 }`}
               >
                 {link.label}
-              </Link>
+              </SectionLink>
             ))}
             <Link
               href="/contact"
