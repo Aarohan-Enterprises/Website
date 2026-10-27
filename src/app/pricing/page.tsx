@@ -82,7 +82,7 @@ export default function PricingPage() {
 
                 <div className="mt-auto flex flex-col gap-3">
                 {plan.price !== 'Custom' && (
-                  <PayNowButton planName={plan.name} planSlug={plan.ctaLink.split('plan=')[1] ?? ''} />
+                  <PayNowButton />
                 )}
                 <Link
                   href={plan.ctaLink}

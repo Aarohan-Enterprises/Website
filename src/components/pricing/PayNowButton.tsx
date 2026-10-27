@@ -1,16 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { CreditCard, X } from 'lucide-react';
-import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 
-interface PayNowButtonProps {
-  planName: string;
-  planSlug: string;
-}
-
-export function PayNowButton({ planSlug }: PayNowButtonProps) {
+export function PayNowButton() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -41,23 +34,7 @@ export function PayNowButton({ planSlug }: PayNowButtonProps) {
               <X size={18} />
             </button>
             <p className="eyebrow mb-3">Online payments</p>
-            <h3 id="paynow-title" className="font-display text-2xl text-ink mb-3">Coming soon</h3>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Link
-                href={`/contact?plan=${planSlug}`}
-                className="flex-1 text-center bg-pine text-paper font-mono text-sm uppercase tracking-wider py-3 hover:bg-pine-dark transition-colors"
-              >
-                Contact us
-              </Link>
-              <a
-                href="https://wa.me/917499462967"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 border border-ink text-ink font-mono text-sm uppercase tracking-wider py-3 hover:bg-ink hover:text-paper transition-colors"
-              >
-                <WhatsAppIcon size={16} /> WhatsApp
-              </a>
-            </div>
+            <h3 id="paynow-title" className="font-display text-2xl text-ink">Payment gateway coming soon</h3>
           </div>
         </div>
       )}
