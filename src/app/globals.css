@@ -66,6 +66,8 @@
   }
 
   .part {
+    display: flex;
+    flex-direction: column;
     padding: 1.4rem;
     border: 1px solid theme('colors.ink');
     margin: -1px 0 0 -1px;

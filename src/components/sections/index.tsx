@@ -108,7 +108,7 @@ export function ProductGrid({ items = products }: { items?: Product[] }) {
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="part group flex flex-col"
+            className="part group"
           >
             <div className="mb-5 flex items-center justify-between">
               <Icon size={22} className="text-gold" strokeWidth={1.5} />
@@ -116,9 +116,9 @@ export function ProductGrid({ items = products }: { items?: Product[] }) {
             </div>
             <h3 className="text-xl font-extrabold text-ink">{p.name}</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">{p.description}</p>
-            <span className="mt-4 inline-block self-start border border-ink px-2 py-0.5 font-mono text-[11px]">
-              {p.tag}
-            </span>
+            <div className="mt-auto pt-5">
+              <span className="inline-block border border-ink px-2 py-0.5 font-mono text-[11px]">{p.tag}</span>
+            </div>
           </a>
         );
       })}
@@ -128,13 +128,13 @@ export function ProductGrid({ items = products }: { items?: Product[] }) {
 
 export function ClientWorkGrid() {
   return (
-    <div className="parts mt-10 grid-cols-1 md:grid-cols-2">
+    <div className="parts mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {clientWork.map((w) => (
         <div key={w.title} className="part">
           <p className="eyebrow mb-2">Private client</p>
           <h3 className="text-xl font-extrabold text-ink">{w.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{w.description}</p>
-          <ul className="mt-4 space-y-1 font-mono text-xs text-ink-soft">
+          <ul className="mt-auto space-y-1 pt-4 font-mono text-xs text-ink-soft">
             {w.points.map((pt) => (
               <li key={pt}>→ {pt}</li>
             ))}
@@ -152,7 +152,7 @@ export function ServiceGrid() {
         <div key={s.title} className="part">
           <h3 className="text-xl font-extrabold text-ink">{s.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.description}</p>
-          <ul className="mt-4 space-y-1 font-mono text-xs text-ink-soft">
+          <ul className="mt-auto space-y-1 pt-4 font-mono text-xs text-ink-soft">
             {s.features.map((f) => (
               <li key={f}>→ {f}</li>
             ))}
@@ -174,7 +174,7 @@ export function Pillars() {
           </p>
           <h3 className="text-xl font-extrabold text-ink">{p.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{p.description}</p>
-          <ul className="mt-4 space-y-1 font-mono text-xs text-ink-soft">
+          <ul className="mt-auto space-y-1 pt-4 font-mono text-xs text-ink-soft">
             {p.points.map((pt) => (
               <li key={pt}>→ {pt}</li>
             ))}
