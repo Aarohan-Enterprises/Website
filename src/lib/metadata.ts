@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/data/seo';
 
-export const DEFAULT_TITLE = 'Aarohan Enterprises - Professional Trading Strategy Automation Services';
+export const DEFAULT_TITLE = 'Aarohan Enterprises | Business Operations Software, Analytics and SaaS';
 export const DEFAULT_SOCIAL_DESCRIPTION =
-  "Transform your trading ideas into automated strategies. India's premier automated algorithmic trading development company.";
+  "Operations systems, analytics dashboards and everyday tools, built to order, plus eight SaaS products of our own. Based in Nagpur, India.";
 
 /**
  * Per-page metadata with a self-referencing canonical and a matching og:url.

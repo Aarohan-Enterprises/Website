@@ -13,14 +13,14 @@ export default function PrivacyPolicyPage() {
       <p><strong>Last updated:</strong> 26 October 2026</p>
       <h2>Who we are</h2>
       <p>
-        Aarohan Enterprises (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at https://pinecoder.in and provides trading-automation, Pine Script development and broker-integration services. This policy explains what personal information we collect, why, and the choices you have. By using our website or services you agree to this policy.
+        Aarohan Enterprises (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the website at https://pinecoder.in and provides custom software, analytics and automation services and operates software products. This policy explains what personal information we collect, why, and the choices you have. By using our website or services you agree to this policy.
       </p>
       <h2>Information we collect</h2>
       <ul>
-        <li><strong>Information you give us:</strong> your name, email address, phone or WhatsApp number, and the details you share about your project, strategy or requirements when you fill in our contact or assessment forms, email us or message us.</li>
+        <li><strong>Information you give us:</strong> your name, email address, phone or WhatsApp number, and the details you share about your project or requirements when you fill in our contact form, email us or message us.</li>
         <li><strong>Billing information:</strong> when you pay for a service, details needed to issue an invoice, such as your name, billing address and, where applicable, tax details. Card, UPI or bank details are handled by our payment processors and are not stored by us.</li>
         <li><strong>Technical information:</strong> basic data sent by your browser, such as IP address, device and browser type, pages visited and referring page, collected through server logs and analytics tools.</li>
-        <li><strong>Strategy and account material:</strong> trading logic, indicators, scripts or screenshots you share so we can build your solution. We never ask for your broker password, PIN or TOTP secret. Please do not send them to us.</li>
+        <li><strong>Project material:</strong> documents, data samples, workflows, scripts or screenshots you share so we can scope and build your solution. We never ask for your passwords, PINs or one-time codes. Please do not send them to us.</li>
       </ul>
       <h2>How we use your information</h2>
       <ul>
@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
       </p>
       <h2>Third-party links</h2>
       <p>
-        Our site may link to third-party websites, such as TradingView, brokers or social platforms. We do not control them and are not responsible for their content or privacy practices.
+        Our site may link to third-party websites, such as our product sites, payment providers or social platforms. We do not control them and are not responsible for their content or privacy practices.
       </p>
       <h2>Children</h2>
       <p>

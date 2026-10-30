@@ -1,27 +1,19 @@
 import type { Metadata } from 'next';
-import { Fraunces, Schibsted_Grotesk, IBM_Plex_Mono } from 'next/font/google';
+import { Archivo, IBM_Plex_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { GA_ID } from '@/lib/analytics';
 import { siteConfig, organizationSchema, localBusinessSchema } from '@/data/seo';
 import { DEFAULT_TITLE, DEFAULT_SOCIAL_DESCRIPTION } from '@/lib/metadata';
 
-// Editorial serif display — the masthead voice.
-const fraunces = Fraunces({
+// One grotesque for display and body; weight does the hierarchy.
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '900'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
+  weight: ['400', '500', '600', '800'],
+  variable: '--font-sans',
 });
 
-// News-grade grotesque for body copy.
-const schibsted = Schibsted_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-});
-
-// Tabular mono for tickers, prices, labels and captions.
+// Mono for labels, captions and figures.
 const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -68,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${schibsted.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${plexMono.variable}`}>
       <head>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

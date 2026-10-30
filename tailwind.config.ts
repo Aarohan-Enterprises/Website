@@ -9,44 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Editorial finance palette — FT-salmon paper, warm ink, pine accent.
-        paper: '#FBEDE0',        // base salmon page
-        band: '#F4DFCD',         // deeper salmon for alternating sections
-        surface: '#FFF8F1',      // raised cards / inputs
-        ink: '#221A12',          // primary text (warm near-black)
-        'ink-soft': '#6E5C4B',   // secondary text
-        'ink-faint': '#9C8975',  // captions / tertiary
-        rule: '#E3D0BB',         // hairline rules & borders
-        'rule-strong': '#CDB295',
-        pine: '#0E5C4A',         // single accent — deep pine teal
-        'pine-dark': '#0A4236',
-        'pine-tint': '#E2ECE7',  // accent wash background
-        // Market semantics — used ONLY for real prices / P&L.
-        up: '#1B7A4B',
-        down: '#BE3A28',
-        // Legacy aliases kept so older references degrade gracefully.
-        primary: '#221A12',
-        secondary: '#0E5C4A',
-        accent: '#1B7A4B',
+        // Blueprint palette taken from the logo: drafting-paper blue-white, navy ink, gold accent.
+        paper: '#EEF3F9',        // page / sheet
+        band: '#E1EAF4',         // alternating sections
+        surface: '#F8FBFF',      // raised cards / inputs
+        ink: '#0F2A52',          // navy: text and all rules
+        'ink-soft': '#4B6285',   // secondary text
+        'ink-faint': '#5B7092',  // captions
+        rule: '#C2D2E6',         // grid lines & hairlines
+        'rule-strong': '#9DB6D1',
+        gold: '#9A6A0E',         // accent for text and small marks (4.6:1 on paper)
+        'gold-dark': '#7C540A',
+        'gold-bright': '#C9973A', // logo gold: fills and tints only
+        'gold-tint': '#F4EAD3',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       letterSpacing: {
-        eyebrow: '0.22em',
+        eyebrow: '0.18em',
       },
       animation: {
-        marquee: 'marquee 40s linear infinite',
         'fade-up': 'fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards',
         'slide-down': 'slideDown 0.3s ease forwards',
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(16px)' },
           to: { opacity: '1', transform: 'translateY(0)' },

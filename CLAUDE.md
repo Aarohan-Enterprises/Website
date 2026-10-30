@@ -1,6 +1,6 @@
 # pinecoder.in — Aarohan Enterprises website
 
-Company marketing site for Aarohan Enterprises at the root of **pinecoder.in** (product
+Company marketing site for Aarohan Enterprises at the root of **pinecoder.in**. Positioning (redesigned 2026-10-30, branch `software-company-redesign`, not yet deployed): a **software company**, led by business operations, then data and analytics, then user convenience; custom work is quoted per project (no published prices); eight own SaaS products; two anonymised private-client systems (freight operations, gaming cafe). Look: blueprint / drafting-sheet, navy and gold from the logo, Archivo + IBM Plex Mono. Pages: `/`, `/products/`, `/services/`, `/about/`, `/pricing/`, `/contact/`, privacy, terms, refund. `/tools/`, `/assessment/`, `/disclaimer/` are static redirect stubs in `public/` (not in the sitemap). Ownership wording must stay "agreed per project", never "you own 100% of the code". (product
 subdomains like alertsync / groupsync / section63 are separate repos). Workspace-wide SEO/DNS
 rules live in `..\.claude\CLAUDE.md` (outside this repo); this file covers only what is specific
 here. No secrets in this file — the repo is on GitHub.
@@ -28,7 +28,7 @@ here. No secrets in this file — the repo is on GitHub.
   every build — no hand-kept `public/sitemap.xml`. It deliberately has **no `<lastmod>`** (no
   honest per-page date source; CI does a shallow checkout). New page = automatically in the sitemap.
 - `public/robots.txt` allows all and points at the sitemap.
-- JSON-LD `Organization` + `ProfessionalService` in `src/app/layout.tsx` (data in `src/data/seo.ts`).
+- JSON-LD `Organization` + `ProfessionalService` in `src/app/layout.tsx` (data in `src/data/seo.ts`); `ItemList` of `SoftwareApplication` on `/products/`; `FAQPage` on `/pricing/`. `public/og-image.jpg` was missing before the redesign (every og:image 404ed); it now exists.
 - After a deploy: resubmit `https://pinecoder.in/sitemap.xml` to `sc-domain:pinecoder.in` via the
   Search Console API (google-auth ADC in-process; see workspace CLAUDE.md §2) and URL-inspect
   changed pages.

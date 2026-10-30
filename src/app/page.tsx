@@ -1,284 +1,103 @@
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { pageMetadata } from '@/lib/metadata';
 import { MainLayout } from '@/components/layouts';
-import { BackToTop, LiveTerminal } from '@/components/ui';
-import { WhatsAppIcon } from '@/components/ui/BrandIcons';
-import { featuredTools } from '@/data/tools';
+import { BackToTop } from '@/components/ui';
 import {
-  ArrowRight, ArrowUpRight, Bot, Code2, Filter, Check,
-} from 'lucide-react';
+  Block, SectionHead, DimensionLine, HeroFigure, ProductGrid, Pillars, ProcessSteps, CtaBand,
+} from '@/components/sections';
+import { featuredProducts } from '@/data/products';
 
 // Home keeps the root layout's default title/description; this adds the canonical + og:url.
 export const metadata = pageMetadata('/');
 
-const services = [
-  {
-    kicker: 'Automation',
-    icon: Bot,
-    title: 'Trading Bots',
-    description:
-      'Fully automated systems for stocks, F&O, and crypto — wired into Zerodha, Angel One, and more.',
-    features: ['Multi-broker execution', 'Risk controls built in', 'Real-time monitoring'],
-  },
-  {
-    kicker: 'Scripting',
-    icon: Code2,
-    title: 'Pine Script & Indicators',
-    description:
-      'Custom TradingView indicators, alerts, and strategies coded to your exact specification.',
-    features: ['Custom indicators', 'Alert systems', 'Strategy scripts'],
-  },
-  {
-    kicker: 'Screening',
-    icon: Filter,
-    title: 'Screener Dashboards',
-    description:
-      'Real-time stock screeners and dashboards tailored to the way you actually read the market.',
-    features: ['Custom filters & scans', 'Real-time alerts', 'Multi-timeframe views'],
-  },
-];
-
-const steps = [
-  {
-    title: 'Tell us your strategy',
-    description:
-      'Share your trading logic. We assess feasibility and send back a detailed quote.',
-    meta: ['Free consultation', 'NDA on request', '24-hour response'],
-  },
-  {
-    title: 'We build & test',
-    description:
-      'Our team codes, backtests, and optimises your system until it holds up.',
-    meta: ['Clean, documented code', 'Rigorous backtesting', 'Performance tuning'],
-  },
-  {
-    title: 'Go live',
-    description:
-      'We deploy to your broker account. The system trades; you supervise.',
-    meta: ['Broker integration', '24/7 execution', 'Ongoing support'],
-  },
+const strip: [string, string][] = [
+  ['8', 'Products we run'],
+  ['In writing', 'Ownership terms'],
+  ['2–4 hrs', 'Reply time, Mon–Sat'],
+  ['Nagpur', 'Based in India'],
 ];
 
 export default function HomePage() {
   return (
-    <MainLayout simpleFooter>
-      {/* ── Hero ───────────────────────────────────────────────── */}
-      <section className="border-b border-ink">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 py-14 lg:py-20 items-center">
-            {/* Headline */}
-            <div className="lg:col-span-7 animate-fade-up">
-              <p className="eyebrow mb-6">Trading systems · Built to order</p>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-[4.5rem] font-medium leading-[1.02] tracking-tight text-ink">
-                Smarter dashboards.
-                <br />
-                Better <span className="accent-ink">decisions.</span>
-              </h1>
-              <p className="mt-7 max-w-xl text-lg text-ink-soft leading-relaxed">
-                We turn market noise into something you can act on. Custom trading
-                dashboards that track P&amp;L, monitor positions, and execute faster —
-                built around the way you trade.
-              </p>
-              <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                <Link href="/assessment" className="btn-primary group">
-                  Take the assessment
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link href="/pricing" className="btn-ghost">
-                  View pricing
-                </Link>
-              </div>
+    <MainLayout>
+      {/* Hero */}
+      <section className="border-b border-ink px-4 py-14 sm:px-8 lg:px-14 lg:py-20">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="animate-fade-up">
+            <h1 className="max-w-[14ch] text-5xl font-extrabold leading-[1.02] tracking-tight text-ink md:text-6xl lg:text-7xl">
+              Built once. Run every day.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+              Software we ship, host and look after, whether it is ours or yours. Operations
+              systems, analytics and everyday tools, quoted to fit your project.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/contact" className="btn-primary group">
+                Start your project
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link href="/products" className="btn-ghost">
+                See our products
+              </Link>
             </div>
-
-            {/* Signature instrument — a live, rotating trading terminal */}
-            <div className="lg:col-span-5 animate-fade-up" style={{ animationDelay: '0.12s' }}>
-              <LiveTerminal />
+            <div className="mt-10">
+              <DimensionLine labels={['BRIEF', 'QUOTE', 'BUILD', 'LAUNCH']} />
             </div>
+          </div>
+          <div className="animate-fade-up" style={{ animationDelay: '0.12s' }}>
+            <HeroFigure />
           </div>
         </div>
       </section>
 
-      {/* ── Trust strip ────────────────────────────────────────── */}
-      <section className="border-b border-ink bg-band">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <dl className="grid grid-cols-2 md:grid-cols-4 divide-x divide-rule text-center">
-            {[
-              ['2+ yrs', 'Building systems'],
-              ['50+', 'Strategies shipped'],
-              ['<100ms', 'Alert delivery'],
-              ['24/7', 'Automated execution'],
-            ].map(([value, label]) => (
-              <div key={label} className="py-7 px-2">
-                <dt className="font-display text-3xl text-ink">{value}</dt>
-                <dd className="eyebrow text-ink-faint mt-2">{label}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+      {/* Facts */}
+      <section className="border-b border-ink bg-surface">
+        <dl className="grid grid-cols-2 md:grid-cols-4">
+          {strip.map(([value, label]) => (
+            <div key={label} className="border-ink px-3 py-6 text-center even:border-l md:border-l md:first:border-l-0">
+              <dt className="text-2xl font-extrabold text-ink md:text-3xl">{value}</dt>
+              <dd className="eyebrow mt-1 !text-ink-faint">{label}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
-      {/* ── What We Build ──────────────────────────────────────── */}
-      <section id="services" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <header className="max-w-3xl mb-12">
-          <p className="eyebrow mb-4">What we build</p>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-ink">
-            Three things, done properly.
-          </h2>
-          <p className="mt-4 text-lg text-ink-soft">
-            No off-the-shelf templates — every system is written for one trader&apos;s rules.
-          </p>
-        </header>
+      {/* Pillars */}
+      <Block>
+        <SectionHead
+          title="Three jobs software should do for a business"
+          lead="We build for the work that keeps your company running, the answers hidden in your records, and the people who use it every day."
+        />
+        <Pillars />
+      </Block>
 
-        <div className="grid md:grid-cols-3 border-t border-ink">
-          {services.map((s) => {
-            const Icon = s.icon;
-            return (
-              <div
-                key={s.title}
-                className="group border-b border-rule md:border-b-0 md:border-r md:last:border-r-0 border-ink/10 p-7 md:px-7 md:py-9 hover:bg-band/50 transition-colors"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <span className="eyebrow">{s.kicker}</span>
-                  <Icon size={20} className="text-pine" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-display text-2xl text-ink mb-3">{s.title}</h3>
-                <p className="text-ink-soft mb-6">{s.description}</p>
-                <ul className="space-y-2">
-                  {s.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 font-mono text-xs text-ink-soft">
-                      <Check size={13} className="text-pine" /> {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-10">
-          <Link href="/pricing" className="link-underline font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2">
-            See all services &amp; pricing <ArrowRight size={15} />
+      {/* Products */}
+      <Block tone="band">
+        <SectionHead
+          title="Software from our desk, ready to use"
+          lead="Tools we first built for our own work, opened up for yours. Each one does a single job properly."
+        />
+        <ProductGrid items={featuredProducts} />
+        <div className="mt-8">
+          <Link href="/products" className="link-underline inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider">
+            See all eight products <ArrowRight size={15} />
           </Link>
         </div>
-      </section>
+      </Block>
 
-      {/* ── Free Tools ─────────────────────────────────────────── */}
-      <section id="tools" className="border-y border-ink bg-band">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <header className="max-w-3xl mb-12">
-            <p className="eyebrow mb-4">Our tools</p>
-            <h2 className="font-display text-4xl md:text-5xl font-medium text-ink">
-              Tools from our desk.
-            </h2>
-            <p className="mt-4 text-lg text-ink-soft">
-              Software we built for our own workflow, opened up for yours.
-            </p>
-          </header>
-
-          <div className="grid sm:grid-cols-2 gap-px bg-rule border border-rule">
-            {featuredTools.map((t) => {
-              const Icon = t.icon;
-              return (
-                <a
-                  key={t.name}
-                  href={t.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-surface p-7 flex flex-col hover:bg-pine-tint transition-colors"
-                >
-                  <div className="flex items-center justify-between mb-6">
-                    <Icon size={22} className="text-pine" strokeWidth={1.5} />
-                    <ArrowUpRight size={18} className="text-ink-faint group-hover:text-pine transition-colors" />
-                  </div>
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1 mb-2">
-                    <h3 className="font-display text-xl text-ink">{t.name}</h3>
-                    <span className="eyebrow text-ink-faint whitespace-nowrap">{t.tag}</span>
-                  </div>
-                  <p className="text-sm text-ink-soft mb-5">{t.description}</p>
-                  <ul className="mt-auto space-y-2">
-                    {t.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 font-mono text-xs text-ink-soft">
-                        <Check size={13} className="text-pine" /> {f}
-                      </li>
-                    ))}
-                  </ul>
-                </a>
-              );
-            })}
-          </div>
-
-          <div className="mt-10">
-            <Link href="/tools" className="link-underline font-mono text-sm uppercase tracking-wider inline-flex items-center gap-2">
-              See all tools <ArrowRight size={15} />
-            </Link>
-          </div>
+      {/* Process */}
+      <Block>
+        <SectionHead title="From idea to live in three steps" />
+        <ProcessSteps />
+        <div className="mt-10">
+          <Link href="/pricing" className="link-underline inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider">
+            How we price projects <ArrowRight size={15} />
+          </Link>
         </div>
-      </section>
+      </Block>
 
-      {/* ── How It Works (a real sequence → numbered) ──────────── */}
-      <section id="how-it-works" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <header className="max-w-3xl mb-12">
-          <p className="eyebrow mb-4">The process</p>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-ink">
-            From idea to live in three steps.
-          </h2>
-        </header>
-
-        <ol className="grid md:grid-cols-3 border-t border-ink">
-          {steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="border-b border-rule md:border-b-0 md:border-r md:last:border-r-0 border-ink/10 p-7 md:px-7 md:py-9"
-            >
-              <div className="flex items-baseline gap-3 mb-5">
-                <span className="font-display text-5xl text-pine leading-none">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className="font-mono text-xs text-ink-faint">/ 03</span>
-              </div>
-              <h3 className="font-display text-2xl text-ink mb-3">{step.title}</h3>
-              <p className="text-ink-soft mb-6">{step.description}</p>
-              <ul className="space-y-2">
-                {step.meta.map((m) => (
-                  <li key={m} className="flex items-center gap-2 font-mono text-xs text-ink-soft">
-                    <ArrowRight size={12} className="text-pine" /> {m}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* ── Closing CTA ────────────────────────────────────────── */}
-      <section className="border-t border-ink bg-ink text-paper">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <p className="eyebrow text-paper/60 mb-5">Start the conversation</p>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-paper max-w-2xl mx-auto">
-            Bring us your strategy. We&apos;ll bring the code.
-          </h2>
-          <p className="mt-5 text-paper/70 max-w-xl mx-auto">
-            Free consultation, no obligations. Most projects start within a week.
-          </p>
-          <div className="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-paper text-ink font-mono text-sm uppercase tracking-wider px-7 py-4 hover:bg-pine hover:text-paper transition-colors"
-            >
-              Start your project <ArrowRight size={16} />
-            </Link>
-            <a
-              href="https://wa.me/917499462967"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 border border-paper/40 text-paper font-mono text-sm uppercase tracking-wider px-7 py-4 hover:border-paper transition-colors"
-            >
-              <WhatsAppIcon size={16} /> WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
+      <CtaBand />
       <BackToTop />
     </MainLayout>
   );

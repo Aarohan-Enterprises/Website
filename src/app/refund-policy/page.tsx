@@ -13,13 +13,13 @@ export default function RefundPolicyPage() {
       <p><strong>Last updated:</strong> 26 October 2026</p>
       <h2>Our approach</h2>
       <p>
-        At Aarohan Enterprises we follow a milestone-based payment approach to ensure transparency and mutual satisfaction. Payments are collected at defined project milestones, and you review and approve each phase before we proceed to the next.
+        This policy covers custom software engagements. Our software products have their own pricing and refund rules, published on each product&apos;s website. At Aarohan Enterprises we follow a milestone-based payment approach to ensure transparency and mutual satisfaction. Payments are collected at defined project milestones, and you review and approve each phase before we proceed to the next.
       </p>
       <h2>How payments work</h2>
       <ul>
         <li>The milestones and amounts are set out in your written quotation before work starts.</li>
         <li>An initial payment may be required to begin work and reserve development time.</li>
-        <li>You review each milestone deliverable and either approve it or send us revision requests within the revision rounds included in your plan.</li>
+        <li>You review each milestone deliverable and either approve it or send us revision requests within the revision rounds included in your quotation.</li>
       </ul>
       <h2>Cancellation and refunds</h2>
       <ul>
@@ -31,13 +31,13 @@ export default function RefundPolicyPage() {
       <h2>What is not refundable</h2>
       <ul>
         <li>milestones you have approved or that have been delivered and put to use;</li>
-        <li>third-party costs we paid on your behalf, such as VPS hosting or platform subscriptions, where already incurred;</li>
-        <li>dissatisfaction caused by trading results or market conditions, since we build to your specification and do not guarantee returns;</li>
-        <li>issues caused by changes made by third-party platforms, brokers or by you after delivery.</li>
+        <li>third-party costs we paid on your behalf, such as cloud hosting or platform subscriptions, where already incurred;</li>
+        <li>dissatisfaction caused by business or trading results, since we build to your specification and do not guarantee outcomes;</li>
+        <li>issues caused by changes made by third-party platforms or by you after delivery.</li>
       </ul>
       <h2>Support period</h2>
       <p>
-        Included support (15 days, 30 days or as stated in your plan) covers fixing defects in the delivered work. Support is not refundable once the period has started.
+        Included support (for the period stated in your quotation) covers fixing defects in the delivered work. Support is not refundable once the period has started.
       </p>
       <h2>How to request a refund</h2>
       <p>

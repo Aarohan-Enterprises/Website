@@ -1,18 +1,19 @@
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { FooterSimple } from './FooterSimple';
 
 interface MainLayoutProps {
   children: React.ReactNode;
-  simpleFooter?: boolean;
 }
 
-export function MainLayout({ children, simpleFooter }: MainLayoutProps) {
+// Every page is one drawing sheet on drafting-paper: a bordered column with the nav on top.
+export function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1">{children}</main>
-      {simpleFooter ? <FooterSimple /> : <Footer />}
+    <div className="bp-grid min-h-screen p-2 sm:p-4 lg:p-6">
+      <div className="mx-auto flex min-h-[calc(100vh-1rem)] max-w-[1240px] flex-col border-2 border-ink bg-paper">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </div>
     </div>
   );
 }

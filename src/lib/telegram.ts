@@ -32,7 +32,7 @@ export function formatContactMessage(data: {
   email: string;
   phone: string;
   service: string;
-  plan?: string;
+  model?: string;
   message?: string;
 }): string {
   return `
@@ -42,41 +42,12 @@ export function formatContactMessage(data: {
 📧 *Email:* ${data.email}
 📱 *Phone:* ${data.phone}
 🛠 *Service:* ${data.service}
-📦 *Plan:* ${data.plan || 'Not specified'}
+📦 *Pricing model:* ${data.model || 'Not specified'}
 
 💬 *Message:*
 ${data.message || 'No message'}
 
 ---
 _Sent from the Aarohan Enterprises website_
-  `.trim();
-}
-
-export function formatAssessmentMessage(data: {
-  name: string;
-  email: string;
-  phone?: string;
-  score: number;
-  maxScore: number;
-  percentage: number;
-  level: string;
-  answersSummary: string;
-}): string {
-  return `
-🎯 *New Assessment Lead*
-
-👤 *Contact Details:*
-• Name: ${data.name}
-• Email: ${data.email}
-• Phone: ${data.phone || 'Not provided'}
-
-📊 *Assessment Results:*
-• Score: ${data.score}/${data.maxScore} (${data.percentage}%)
-• Level: ${data.level}
-
-📝 *Responses:*
-${data.answersSummary}
-
-⏰ Submitted: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
   `.trim();
 }

@@ -17,10 +17,10 @@
   h1, h2, h3, h4 {
     font-family: theme('fontFamily.display');
     color: theme('colors.ink');
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
-  /* Tabular, lining figures everywhere numbers carry meaning. */
   .font-mono,
   table,
   time {
@@ -28,113 +28,101 @@
   }
 
   ::selection {
-    background-color: theme('colors.pine');
-    color: theme('colors.paper');
+    background-color: theme('colors.gold-bright');
+    color: theme('colors.ink');
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.pine');
+    outline: 2px solid theme('colors.gold');
     outline-offset: 2px;
-  }
-
-  ::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: theme('colors.band');
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: theme('colors.rule-strong');
-    border: 3px solid theme('colors.band');
-    border-radius: 0;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.pine');
   }
 }
 
 @layer components {
-  /* ── Editorial structural devices ───────────────────────────── */
+  /* Drafting-paper background behind the sheet. */
+  .bp-grid {
+    background-color: theme('colors.paper');
+    background-image:
+      linear-gradient(theme('colors.rule') 1px, transparent 1px),
+      linear-gradient(90deg, theme('colors.rule') 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: -1px -1px;
+  }
 
-  /* Mono kicker / eyebrow label, set in small caps tracking. */
+  /* Small mono label above a heading. */
   .eyebrow {
     font-family: theme('fontFamily.mono');
     font-size: 0.7rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: theme('letterSpacing.eyebrow');
-    color: theme('colors.pine');
+    color: theme('colors.gold');
   }
 
-  /* Hairline rule — the page's primary divider. */
-  .rule {
-    border: 0;
-    border-top: 1px solid theme('colors.rule');
+  /* Boxed grid of parts: neighbours share borders. */
+  .parts {
+    display: grid;
+    border: 1px solid theme('colors.ink');
   }
 
-  .rule-ink {
-    border: 0;
-    border-top: 1.5px solid theme('colors.ink');
+  .part {
+    padding: 1.4rem;
+    border: 1px solid theme('colors.ink');
+    margin: -1px 0 0 -1px;
+    background-color: theme('colors.paper');
+    transition: background-color 0.15s ease;
   }
 
-  /* Accent on a phrase — replaces the old gradient text. */
-  .accent-ink {
-    font-style: italic;
-    color: theme('colors.pine');
-  }
-
-  /* ── Ticker tape (the signature element) ────────────────────── */
-  .ticker-mask {
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  }
-
-  .ticker-track {
-    display: inline-flex;
-    white-space: nowrap;
-  }
-
-  /* One element holds two copies and slides left by exactly one copy width,
-     so the tape scrolls seamlessly and continuously. */
-  .ticker-marquee {
-    display: flex;
-    width: max-content;
-    animation: ticker-scroll 40s linear infinite;
-  }
-
-  /* ── Cards / surfaces ───────────────────────────────────────── */
-  .card {
+  a.part:hover {
     background-color: theme('colors.surface');
-    border: 1px solid theme('colors.rule');
-    transition: border-color 0.25s ease, transform 0.25s ease;
   }
 
-  .card-hover:hover {
-    border-color: theme('colors.ink');
+  /* Dimension line: ─┤ BRIEF ├─ QUOTE ... */
+  .dim-line {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: theme('fontFamily.mono');
+    font-size: 0.7rem;
+    color: theme('colors.ink-faint');
   }
 
-  /* ── Buttons ────────────────────────────────────────────────── */
+  .dim-line i {
+    flex: 1;
+    min-width: 0.75rem;
+    height: 1px;
+    background: theme('colors.ink');
+    position: relative;
+  }
+
+  .dim-line i::before,
+  .dim-line i::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 1px;
+    height: 9px;
+    background: theme('colors.ink');
+  }
+
+  .dim-line i::after { right: 0; }
+
   .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background-color: theme('colors.pine');
+    background-color: theme('colors.ink');
     color: theme('colors.paper');
-    font-family: theme('fontFamily.mono');
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.6rem;
-    transition: background-color 0.2s ease;
+    border: 2px solid theme('colors.ink');
+    font-weight: 600;
+    padding: 0.8rem 1.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   .btn-primary:hover {
-    background-color: theme('colors.pine-dark');
+    background-color: theme('colors.gold-dark');
+    border-color: theme('colors.gold-dark');
   }
 
   .btn-ghost {
@@ -144,13 +132,9 @@
     gap: 0.5rem;
     background-color: transparent;
     color: theme('colors.ink');
-    font-family: theme('fontFamily.mono');
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.6rem;
-    border: 1px solid theme('colors.ink');
+    border: 2px solid theme('colors.ink');
+    font-weight: 600;
+    padding: 0.8rem 1.4rem;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
@@ -159,10 +143,9 @@
     color: theme('colors.paper');
   }
 
-  /* Inline text link with the editorial underline reveal. */
   .link-underline {
-    color: theme('colors.pine');
-    background-image: linear-gradient(theme('colors.pine'), theme('colors.pine'));
+    color: theme('colors.gold');
+    background-image: linear-gradient(theme('colors.gold'), theme('colors.gold'));
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 100% 1px;
@@ -173,15 +156,13 @@
     background-size: 0 1px;
   }
 
-  /* ── Form fields ────────────────────────────────────────────── */
   .field {
     width: 100%;
     background-color: theme('colors.surface');
-    border: 1px solid theme('colors.rule-strong');
+    border: 1.5px solid theme('colors.ink');
     color: theme('colors.ink');
-    padding: 0.8rem 0.95rem;
-    font-family: theme('fontFamily.body');
-    transition: border-color 0.2s ease;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0;
   }
 
   .field::placeholder {
@@ -189,11 +170,10 @@
   }
 
   .field:focus {
-    outline: none;
-    border-color: theme('colors.pine');
+    outline: 2px solid theme('colors.gold');
+    outline-offset: 1px;
   }
 
-  /* ── Long-form legal / prose ────────────────────────────────── */
   .editorial-prose {
     color: theme('colors.ink-soft');
     line-height: 1.75;
@@ -203,41 +183,25 @@
   .editorial-prose h2 {
     color: theme('colors.ink');
     font-size: 1.4rem;
+    font-weight: 800;
     margin: 2rem 0 0.75rem;
   }
   .editorial-prose ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1.1rem; }
   .editorial-prose li { margin-bottom: 0.4rem; }
   .editorial-prose strong { color: theme('colors.ink'); }
-  .editorial-prose a { color: theme('colors.pine'); text-decoration: underline; }
+  .editorial-prose a { color: theme('colors.gold'); text-decoration: underline; }
 }
 
-@layer utilities {
-  /* Market data semantics — only for real prices / P&L. */
-  .data-up { color: theme('colors.up'); }
-  .data-down { color: theme('colors.down'); }
-}
-
-/* Defined here (not via Tailwind's animate-* utility) so the keyframes are
-   always emitted, even though the ticker uses a custom class. */
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Print */
 @media print {
   .no-print { display: none !important; }
   body { background: white; color: black; }
 }
 
-/* Responsive display type */
 @media (max-width: 640px) {
   h1 { font-size: 2.25rem; }
   h2 { font-size: 1.65rem; }
-  h3 { font-size: 1.3rem; }
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -247,6 +211,4 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-
-  .ticker-marquee { animation: none; }
 }

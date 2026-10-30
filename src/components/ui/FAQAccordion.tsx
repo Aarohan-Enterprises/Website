@@ -30,17 +30,17 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                 <span className="font-mono text-xs text-ink-faint pt-0.5">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="font-display text-lg text-ink group-hover:text-pine transition-colors">
+                <span className="font-display text-lg text-ink group-hover:text-gold transition-colors">
                   {item.question}
                 </span>
               </span>
-              <span className="text-pine flex-shrink-0 mt-1">
+              <span className="text-gold flex-shrink-0 mt-1">
                 {open ? <Minus size={18} /> : <Plus size={18} />}
               </span>
             </button>
             <div
               className={`overflow-hidden transition-all duration-300 ${
-                open ? 'max-h-60' : 'max-h-0'
+                open ? 'max-h-96' : 'max-h-0'
               }`}
             >
               <p className="pb-5 pl-8 pr-8 text-ink-soft leading-relaxed">{item.answer}</p>

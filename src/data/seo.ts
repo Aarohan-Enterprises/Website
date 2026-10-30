@@ -2,8 +2,10 @@ export const siteConfig = {
   name: 'Aarohan Enterprises',
   url: 'https://pinecoder.in',
   ogImage: 'https://pinecoder.in/og-image.jpg',
-  description: 'Aarohan Enterprises provides professional trading strategy automation services in India. Build, backtest, and deploy algo trading strategies with TradingView, Python, and advanced risk management.',
-  keywords: 'algo trading India, trading automation, strategy development, TradingView automation, Python trading, automated algorithmic trading services, Aarohan Enterprises, pinecoder.in, trading bot development',
+  description:
+    'Aarohan Enterprises builds business operations systems, analytics dashboards and everyday tools for companies, and runs eight SaaS products of its own. Every project is quoted to fit. Based in Nagpur, India.',
+  keywords:
+    'software company India, business operations software, custom software development Nagpur, analytics dashboards, workflow automation, SaaS products, WhatsApp automation, freight operations software, Aarohan Enterprises, pinecoder.in',
   author: 'Aarohan Enterprises',
   phone: '+91-7499462967',
   email: 'contact@pinecoder.in',
@@ -19,6 +21,8 @@ export const organizationSchema = {
   legalName: 'Aarohan Enterprises',
   url: 'https://pinecoder.in',
   logo: 'https://pinecoder.in/logo-square-dark-theme.png',
+  description:
+    'A software company that builds business operations systems, analytics dashboards and everyday tools, and runs its own SaaS products.',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+91-7499462967',
@@ -32,6 +36,7 @@ export const organizationSchema = {
     addressRegion: 'Maharashtra',
     addressCountry: 'IN',
   },
+  founder: { '@type': 'Person', name: 'Chaitanya Murarka' },
   sameAs: ['https://www.linkedin.com/in/chaitanya-murarka/'],
   areaServed: 'IN',
 };
@@ -40,6 +45,8 @@ export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Aarohan Enterprises',
+  description:
+    'Custom software for business operations, data and analytics, and workflow automation, quoted per project.',
   image: 'https://pinecoder.in/og-image.jpg',
   url: 'https://pinecoder.in',
   telephone: '+91-7499462967',
@@ -53,9 +60,8 @@ export const localBusinessSchema = {
   },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     opens: '09:00',
-    closes: '18:00',
+    closes: '19:00',
   },
-  priceRange: '$250 - $500+',
 };

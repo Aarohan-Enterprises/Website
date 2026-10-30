@@ -1,105 +1,40 @@
-import type { PricingPlan, AddOn, ComparisonRow } from '@/types/pricing';
-
-export const pricingPlans: PricingPlan[] = [
+export const engagementModels = [
   {
-    name: 'Broker Integration',
-    subtitle: 'Automate execution',
-    price: '₹5,999',
-    priceLabel: 'onwards',
-    features: [
-      'Third-party bridge platform setup',
-      'TradingView to broker connectivity',
-      'Order execution automation',
-      'Basic error handling & alerts',
-      'Setup documentation',
-      '15 Days Support',
-    ],
-    ctaText: 'Discuss Your Setup',
-    ctaLink: '/contact?plan=broker-integration',
-    iconColor: 'text-pine',
-    borderColor: 'border-rule',
+    title: 'Fixed scope',
+    description: 'A defined build with a written scope, milestones and one price. Best when you know what you need.',
   },
   {
-    name: 'Pine Script Development',
-    subtitle: 'Strategies & indicators',
-    price: '₹9,999',
-    priceLabel: 'onwards',
-    features: [
-      'Custom indicator or strategy',
-      'TradingView Pine Script v5',
-      'Backtesting with report',
-      'Alert condition setup',
-      'Source code ownership',
-      '30 Days Support',
-      'Revision rounds included',
-    ],
-    ctaText: 'Start Your Project',
-    ctaLink: '/contact?plan=pine-script',
-    popular: true,
-    iconColor: 'text-pine',
-    borderColor: 'border-ink',
+    title: 'Team on retainer',
+    description: 'A monthly engagement for steady work: features, fixes and releases without re-quoting each time.',
   },
   {
-    name: 'Custom Solution',
-    subtitle: 'End-to-end systems',
-    price: 'Custom',
-    priceLabel: '',
-    features: [
-      'Multi-strategy systems',
-      'Any language or platform',
-      'Custom dashboards & screeners',
-      'Portfolio-level risk management',
-      'Dedicated support & maintenance',
-      'Complete infrastructure setup',
-    ],
-    ctaText: 'Contact Us',
-    ctaLink: '/contact?plan=custom',
-    iconColor: 'text-pine',
-    borderColor: 'border-rule',
+    title: 'Licence a product',
+    description: 'Use one of our products as is, or have it white-labelled and extended for your business.',
   },
 ];
 
-export const addOns: AddOn[] = [
-  {
-    name: 'Advanced Backtesting',
-    description: 'Multi-year walk-forward analysis & optimization',
-    price: '₹3,000',
-    priceLabel: '+',
-    iconColor: 'text-pine',
-    iconBgColor: 'bg-pine-tint',
-  },
-  {
-    name: 'ML Integration',
-    description: 'Machine learning models for signal generation',
-    price: '₹5,000',
-    priceLabel: '+',
-    iconColor: 'text-purple-500',
-    iconBgColor: 'bg-purple-600/10',
-  },
-  {
-    name: 'VPS Hosting Setup',
-    description: '24/7 cloud server for algo execution',
-    price: '₹2,000',
-    priceLabel: '+',
-    iconColor: 'text-green-500',
-    iconBgColor: 'bg-green-600/10',
-  },
-  {
-    name: '1-on-1 Training',
-    description: 'Personal strategy & platform coaching',
-    price: '₹1,000',
-    priceLabel: '/hr',
-    iconColor: 'text-yellow-500',
-    iconBgColor: 'bg-yellow-600/10',
-  },
+export const priceVariables = [
+  { name: 'Scope', description: 'How many screens, roles and workflows the first release must cover.' },
+  { name: 'Integrations', description: 'Each outside system (payments, WhatsApp, ERP, government portals) adds design and testing time.' },
+  { name: 'Timeline', description: 'A fixed launch date can mean more people working in parallel.' },
+  { name: 'Data and compliance', description: 'Sensitive records, audit trails and legal requirements raise the care needed.' },
+  { name: 'After launch', description: 'Hosting, support hours and a feature roadmap are priced separately, so you choose.' },
 ];
 
-export const comparisonRows: ComparisonRow[] = [
-  { feature: 'Strategy Development', starter: false, professional: true, enterprise: true },
-  { feature: 'Broker Integration', starter: true, professional: 'Add-on', enterprise: true },
-  { feature: 'Alert Setup', starter: 'Basic', professional: 'Advanced', enterprise: 'Custom' },
-  { feature: 'Backtesting', starter: false, professional: 'Included', enterprise: 'Institutional' },
-  { feature: 'Risk Management', starter: false, professional: 'Basic', enterprise: 'Advanced' },
-  { feature: 'Support Duration', starter: '15 Days', professional: '30 Days', enterprise: '90 Days+' },
-  { feature: 'Source Code', starter: true, professional: true, enterprise: true },
+export const processSteps = [
+  {
+    title: 'Tell us what you need',
+    description: 'Share the problem. We assess it and send back a detailed quote.',
+    meta: ['Free consultation', 'NDA on request', 'Reply in 2–4 hours, Mon–Sat'],
+  },
+  {
+    title: 'We build and test',
+    description: 'Our team builds, tests and refines until it holds up. You approve each milestone.',
+    meta: ['Clean, documented code', 'Weekly demos', 'Milestone approvals'],
+  },
+  {
+    title: 'Go live',
+    description: 'We deploy it, hand over what was agreed and keep supporting it.',
+    meta: ['Deployed to your accounts', 'Ownership agreed in writing', 'Ongoing support'],
+  },
 ];

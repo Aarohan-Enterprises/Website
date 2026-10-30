@@ -3,7 +3,7 @@ import {
   Bell, BarChart3, Users, FileText, MessageSquareText, ShieldCheck, Clock, SlidersVertical,
 } from 'lucide-react';
 
-export interface Tool {
+export interface Product {
   icon: LucideIcon;
   name: string;
   tag: string;
@@ -12,7 +12,7 @@ export interface Tool {
   features: string[];
 }
 
-export const tools: Tool[] = [
+export const products: Product[] = [
   {
     icon: Bell,
     name: 'AlertSync',
@@ -85,6 +85,6 @@ export const tools: Tool[] = [
   },
 ];
 
-// Tools surfaced on the home page; the rest live on the /tools page.
-export const featuredToolNames = ['AlertSync', 'Loadout'];
-export const featuredTools = tools.filter((t) => featuredToolNames.includes(t.name));
+// Products surfaced on the home page; the rest live on /products.
+export const featuredProductNames = ['AlertSync', 'Section63', 'ChatIntoPDF', 'PDF Editor'];
+export const featuredProducts = products.filter((p) => featuredProductNames.includes(p.name));
