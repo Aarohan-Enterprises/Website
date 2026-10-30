@@ -1,5 +1,3 @@
-export const credentials = ['NISM certified', 'Cloud infrastructure', 'Pine Script experts', 'Nagpur, India'];
-
 export const stages = [
   { title: 'Trading automation', description: "Pine Script, bots and screeners built to one trader's rules." },
   { title: 'Tools from our desk', description: 'AlertSync, Loadout and the Volatility Screener, built for our own workflow.' },

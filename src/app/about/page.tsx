@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { pageMetadata } from '@/lib/metadata';
 import { MainLayout } from '@/components/layouts';
 import { BackToTop } from '@/components/ui';
 import { LinkedInIcon } from '@/components/ui/BrandIcons';
 import { Block, SectionHead, CtaBand } from '@/components/sections';
-import { credentials, stages, coreValues, whyChooseUs, founder } from '@/data/about';
+import { stages, coreValues, whyChooseUs, founder } from '@/data/about';
 
 export const metadata: Metadata = pageMetadata('/about/', {
   title: 'About Us - A Software Company Built by Engineers',
@@ -38,18 +39,17 @@ export default function AboutPage() {
               our own, which is why we know what it takes to keep software working long after
               launch.
             </p>
-            <ul className="flex flex-wrap gap-2 pt-2">
-              {credentials.map((c) => (
-                <li key={c} className="border border-ink px-3 py-1.5 font-mono text-xs text-ink">
-                  {c}
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="grid border-2 border-ink bg-surface sm:grid-cols-[110px_1fr]">
-            <div className="flex min-h-[110px] items-center justify-center border-b-2 border-ink bg-paper text-4xl font-extrabold text-ink sm:border-b-0 sm:border-r-2" aria-hidden="true">
-              CM
+          <div className="grid border-2 border-ink bg-surface sm:grid-cols-[150px_1fr]">
+            <div className="border-b-2 border-ink sm:border-b-0 sm:border-r-2">
+              <Image
+                src="/images/founder.jpg"
+                alt="Chaitanya Murarka, founder of Aarohan Enterprises"
+                width={400}
+                height={400}
+                className="h-full max-h-64 w-full object-cover sm:max-h-none"
+              />
             </div>
             <div className="p-5">
               <h3 className="inline text-xl font-extrabold text-ink">{founder.name}</h3>
