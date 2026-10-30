@@ -35,6 +35,12 @@ here. No secrets in this file — the repo is on GitHub.
 
 ## Indexing snapshot
 
+**2026-10-30** (software-company redesign deployed, commit f8f10b5; sitemap resubmitted, HTTP 204):
+- `/` — indexed (last crawled 2026-10-19, before the redesign; recrawl pending).
+- `/pricing/`, `/products/` — "Discovered – currently not indexed". `/about/` — unknown to Google.
+- Remaining gap is crawl priority/authority (inbound links), not tags. `/tools/`, `/assessment/`, `/disclaimer/`
+  are now static redirect stubs (meta refresh + canonical, noindex). Re-inspect in a week.
+
 **2026-10-12** (URL Inspection):
 - `/` — indexed.
 - `/about/`, `/tools/`, `/pricing/`, `/contact/`, `/assessment/`, `/privacy-policy/`,
