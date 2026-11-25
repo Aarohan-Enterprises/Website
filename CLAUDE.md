@@ -25,6 +25,10 @@ here. No secrets in this file — the repo is on GitHub.
   carried over by `deploy.sh` on every redeploy). The relay rejects any POST without a valid token. The careers form
   also requires a video link and all six `applyChecks` boxes (keys shared with `APPLY_CHECKS` in the relay), and
   refuses a github.com profile/repo as the "website".
+- **Replying to applicants:** `python forms-relay/reply.py list` (site, video, resume email, replied?) and
+  `python forms-relay/reply.py send <drafts.json> [--really]` (Zoho SMTP from contact@pinecoder.in, settings read from the
+  groupsync-payments Lambda env; writes `reply.json` beside the application so nobody is mailed twice). Drafts hold
+  candidates' emails: keep them in `Aarohan/hiring/`, never in this repo. Send only after the owner approves the text.
 - **Every submission is also archived** (since 2026-11-25) to private bucket
   `pinecoder-form-submissions-576847308300` (public access blocked, SSE-S3, objects expire after 365 days):
   `applications/<UTC ts>-<id>/{submission.json,<resume>}` and `contacts/<UTC ts>-<id>/submission.json`.
