@@ -52,7 +52,7 @@ export const taskSteps = [
   {
     title: 'Make an AI-generated video about your work',
     description:
-      'Use AI tools to make a 30 to 90 second video that presents your projects, your stack and why you want this internship. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
+      'Use AI tools to make a video of at least 2 minutes that presents your projects, your stack and your accomplishments. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
   },
   {
     title: 'Run SEO checks and tell us the score',
