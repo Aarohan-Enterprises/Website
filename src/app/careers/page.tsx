@@ -35,7 +35,7 @@ const jobSchema = {
     '<p>Aarohan Enterprises is hiring a full-time Software Development Engineer (SDE) intern. Hybrid: office days in Nagpur plus remote days. Nagpur-based candidates only. Final-semester students who can do this as their final-semester internship are preferred.</p>',
     `<p><strong>What you will do:</strong></p><ul>${work.map((w) => `<li>${w.title}: ${w.description}</li>`).join('')}</ul>`,
     `<p><strong>Who we are looking for:</strong></p><ul>${lookingFor.map((l) => `<li>${l}</li>`).join('')}</ul>`,
-    `<p><strong>How to apply:</strong> build and publish a portfolio website of your projects, tech stack and accomplishments with a short AI-generated video about your work, run Lighthouse and PageSpeed Insights on it, and submit your website link and resume with the form on this page.</p>`,
+    `<p><strong>How to apply:</strong> build and publish a portfolio website of your projects, tech stack and accomplishments with a short AI-generated video about your work, check its SEO, and submit your website link and resume with the form on this page.</p>`,
   ].join(''),
   datePosted: DATE_POSTED,
   employmentType: ['INTERN', 'FULL_TIME'],

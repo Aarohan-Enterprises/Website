@@ -57,7 +57,7 @@ export const taskSteps = [
   {
     title: 'Run SEO checks and tell us the score',
     description:
-      'Run Lighthouse (Chrome DevTools, mobile) and Google PageSpeed Insights on your site and screenshot the scores. A low score is fine: without a domain or links you will not get 100. In 150 words or less, tell us what pulls it down, what you fixed and what you would fix next. Put the screenshots and the note on your site.',
+      'Check how your site does on SEO, with whatever tools you pick, and show the scores on your site. A low score is fine: without a domain or links you will not get 100. In 150 words or less, tell us what pulls it down, what you fixed and what you would fix next.',
   },
 ];
 
@@ -66,7 +66,7 @@ export const siteChecklist = [
   'Your tech stack and accomplishments',
   'The AI video about your work, with a line on the tools you used',
   'Optional: a GitHub Actions workflow that deploys it',
-  'Your Lighthouse and PageSpeed Insights score screenshots and your short note',
+  'Your SEO scores and your short note',
 ];
 
 export const processSteps = [
