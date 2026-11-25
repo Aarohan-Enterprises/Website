@@ -33,12 +33,27 @@ aws s3api put-bucket-encryption --bucket "$BUCKET" --server-side-encryption-conf
 aws s3api put-bucket-lifecycle-configuration --bucket "$BUCKET" --lifecycle-configuration   "{\"Rules\":[{\"ID\":\"expire\",\"Status\":\"Enabled\",\"Filter\":{\"Prefix\":\"\"},\"Expiration\":{\"Days\":$KEEP_DAYS}}]}"
 aws iam put-role-policy --role-name "$ROLE" --policy-name archive-write --policy-document   "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:PutObject\",\"Resource\":\"arn:aws:s3:::$BUCKET/*\"}]}"
 
-BUCKET="$BUCKET" python - "$TMP/env.json" <<'PY'
+# TURNSTILE_SECRET: from $TURNSTILE_SECRET_FILE (the JSON Cloudflare returned when the widget was made) when given,
+# otherwise carried over from the live function, so a plain redeploy never drops the captcha.
+BUCKET="$BUCKET" FN="$FN" python - "$TMP/env.json" <<'PY'
 import json, os, subprocess, sys
 get = lambda n: subprocess.check_output(["gh", "variable", "get", n], text=True).strip()
+secret = ""
+if os.environ.get("TURNSTILE_SECRET_FILE"):
+    secret = json.load(open(os.environ["TURNSTILE_SECRET_FILE"]))["result"]["secret"]
+else:
+    try:
+        cur = json.loads(subprocess.check_output(["aws", "lambda", "get-function-configuration", "--function-name", os.environ["FN"],
+                                                  "--query", "Environment.Variables", "--output", "json"], text=True)) or {}
+        secret = cur.get("TURNSTILE_SECRET", "")
+    except subprocess.CalledProcessError:
+        pass
+if not secret:
+    sys.exit("No TURNSTILE_SECRET: pass TURNSTILE_SECRET_FILE=<widget json> on the first deploy.")
 json.dump({"Variables": {"TELEGRAM_BOT_TOKEN": get("NEXT_PUBLIC_TELEGRAM_BOT_TOKEN"),
                          "TELEGRAM_CHAT_ID": get("NEXT_PUBLIC_TELEGRAM_CHAT_ID"),
-                         "ARCHIVE_BUCKET": os.environ["BUCKET"]}}, open(sys.argv[1], "w"))
+                         "ARCHIVE_BUCKET": os.environ["BUCKET"],
+                         "TURNSTILE_SECRET": secret}}, open(sys.argv[1], "w"))
 PY
 
 (cd "$HERE" && python -c "import zipfile; z=zipfile.ZipFile(r'$TMP/fn.zip','w',zipfile.ZIP_DEFLATED); z.write('index.mjs'); z.close()")

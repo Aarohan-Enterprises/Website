@@ -69,8 +69,18 @@ export const siteChecklist = [
   'Your SEO scores and your short note',
 ];
 
+/** Ticked on the form before submitting. Keys must match APPLY_CHECKS in forms-relay/index.mjs. */
+export const applyChecks: { key: string; label: string }[] = [
+  { key: 'nagpur', label: 'I live in Nagpur and can come to the office on office days.' },
+  { key: 'finalSem', label: 'I am in my final semester (or have just graduated) and can work full-time.' },
+  { key: 'site', label: 'My website is live and shows my projects, tech stack and accomplishments.' },
+  { key: 'video', label: 'My website has my AI-generated video, at least 2 minutes long.' },
+  { key: 'seo', label: 'My website shows my SEO scores and a short note on what I would fix.' },
+  { key: 'privacy', label: 'I agree to the Privacy Policy.' },
+];
+
 export const processSteps = [
-  { title: 'Submit the form', description: 'Your website link and your resume. Everything else is on your site.' },
+  { title: 'Submit the form', description: 'Your website link, your video link and your resume. Everything else is on your site.' },
   { title: 'We open your site', description: 'We go through your projects, watch the video and read the code and the note.' },
   { title: 'Walk us through it', description: 'A relaxed chat, on a call or at the office, about how you built your site and how your code works.' },
 ];

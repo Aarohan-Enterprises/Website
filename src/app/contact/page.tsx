@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { MainLayout } from '@/components/layouts';
 import { FAQAccordion } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 import { contactFAQs } from '@/data/faq';
 import { postForm } from '@/lib/forms';
+import { Turnstile, type TurnstileHandle } from '@/components/ui/Turnstile';
 import { isValidPhone } from '@/lib/utils';
 import { ArrowRight, Phone, Mail, MapPin, Check, Loader2, Shield, PhoneOff, Clock } from 'lucide-react';
 
@@ -32,6 +33,8 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [captcha, setCaptcha] = useState('');
+  const human = useRef<TurnstileHandle>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,17 +43,23 @@ export default function ContactPage() {
       setError('Please enter a valid 10-digit phone number.');
       return;
     }
+    if (!captcha) {
+      setError('Please complete the "Verify you are human" check.');
+      return;
+    }
     setSubmitting(true);
-    const sent = await postForm({ kind: 'contact', ...formData });
+    const sent = await postForm({ kind: 'contact', ...formData, captcha });
     if (sent.ok) {
       setSuccess(true);
     } else {
       setError(sent.error || 'We could not send your message. Please email contact@pinecoder.in or use WhatsApp.');
+      human.current?.reset();
     }
     setSubmitting(false);
   };
 
   const resetForm = () => {
+    setCaptcha(""); // the old token was spent; the remounted widget issues a new one
     setFormData(EMPTY);
     setAgreed(false);
     setSuccess(false);
@@ -118,13 +127,15 @@ export default function ContactPage() {
                   </span>
                 </label>
 
+                <Turnstile ref={human} onToken={setCaptcha} />
+
                 {error && (
                   <p role="alert" className="border border-ink bg-gold-tint px-3 py-2 text-sm text-ink">
                     {error}
                   </p>
                 )}
 
-                <button type="submit" disabled={submitting} className="btn-primary w-full disabled:opacity-50">
+                <button type="submit" disabled={submitting || !captcha} className="btn-primary w-full disabled:opacity-50">
                   {submitting ? <><Loader2 size={16} className="animate-spin" /> Sending…</> : <>Send message <ArrowRight size={15} /></>}
                 </button>
 

@@ -153,7 +153,7 @@ export default function CareersPage() {
         <div className="grid gap-px border border-ink bg-ink lg:grid-cols-5">
           <div className="bg-surface p-6 md:p-10 lg:col-span-3">
             <p className="eyebrow mb-2">Apply</p>
-            <h2 className="mb-6 text-2xl font-extrabold text-ink md:text-3xl">Send your website and resume</h2>
+            <h2 className="mb-6 text-2xl font-extrabold text-ink md:text-3xl">Send your website, video and resume</h2>
             <ApplyForm />
           </div>
           <div className="bg-paper p-6 md:p-8 lg:col-span-2">

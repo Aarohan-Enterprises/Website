@@ -5,6 +5,9 @@
  */
 export const FORMS_URL = 'https://cx3geulnndnx3vnyhi227pbu6i0xship.lambda-url.ap-south-1.on.aws/';
 
+/** Cloudflare Turnstile site key (public by design). The relay verifies each token with the secret. */
+export const TURNSTILE_SITEKEY = '0x4AAAAAAGSvQIsYN3YHhSwA';
+
 export const FALLBACK_ERROR = 'We could not send this. Please email contact@pinecoder.in or message us on WhatsApp.';
 
 export async function postForm(payload: Record<string, unknown>): Promise<{ ok: boolean; error?: string }> {

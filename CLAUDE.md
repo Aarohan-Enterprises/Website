@@ -20,6 +20,11 @@ here. No secrets in this file — the repo is on GitHub.
   (`src/lib/forms.ts`; source + tests + deploy in `forms-relay/`). It validates (resume sniffed by bytes:
   PDF/DOC/DOCX ≤ 4 MB; honeypot `company`), then calls Telegram `sendMessage` / `sendDocument` as
   **@AarohanEnt_ClientReg_Bot** into the owner's private chat.
+- **Bot protection (2026-11-25):** both forms carry a Cloudflare **Turnstile** token (widget "pinecoder.in forms",
+  site key in `src/lib/forms.ts`, domains pinecoder.in + localhost; secret only in the Lambda env as `TURNSTILE_SECRET`,
+  carried over by `deploy.sh` on every redeploy). The relay rejects any POST without a valid token. The careers form
+  also requires a video link and all six `applyChecks` boxes (keys shared with `APPLY_CHECKS` in the relay), and
+  refuses a github.com profile/repo as the "website".
 - **Every submission is also archived** (since 2026-11-25) to private bucket
   `pinecoder-form-submissions-576847308300` (public access blocked, SSE-S3, objects expire after 365 days):
   `applications/<UTC ts>-<id>/{submission.json,<resume>}` and `contacts/<UTC ts>-<id>/submission.json`.
