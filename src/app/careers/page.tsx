@@ -21,7 +21,7 @@ import {
 export const metadata = pageMetadata('/careers/', {
   title: 'Careers - SDE Intern (Hybrid, Nagpur)',
   description:
-    'Aarohan Enterprises is hiring a full-time SDE intern in Nagpur, hybrid. Final-semester students preferred. Apply by publishing your own website with a video of yourself.',
+    'Aarohan Enterprises is hiring a full-time SDE intern in Nagpur, hybrid. Final-semester students preferred. Apply by publishing your own website with an AI-generated video of yourself.',
 });
 
 const mailto = `mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(APPLY_SUBJECT)}`;
@@ -35,7 +35,7 @@ const jobSchema = {
     '<p>Aarohan Enterprises is hiring a full-time Software Development Engineer (SDE) intern. Hybrid: office days in Nagpur plus remote days. Nagpur-based candidates only. Final-semester students who can do this as their final-semester internship are preferred.</p>',
     `<p><strong>What you will do:</strong></p><ul>${work.map((w) => `<li>${w.title}: ${w.description}</li>`).join('')}</ul>`,
     `<p><strong>Who we are looking for:</strong></p><ul>${lookingFor.map((l) => `<li>${l}</li>`).join('')}</ul>`,
-    `<p><strong>How to apply:</strong> build and publish your own website with a short video of yourself, run Lighthouse and PageSpeed Insights on it, and email the link, scores and your resume to ${APPLY_EMAIL}.</p>`,
+    `<p><strong>How to apply:</strong> build and publish your own website with a short AI-generated video of yourself, run Lighthouse and PageSpeed Insights on it, and email the link, scores and your resume to ${APPLY_EMAIL}.</p>`,
   ].join(''),
   datePosted: DATE_POSTED,
   employmentType: ['INTERN', 'FULL_TIME'],
@@ -158,9 +158,10 @@ export default function CareersPage() {
           <div className="bg-band p-6 md:p-8">
             <h3 className="eyebrow mb-4">AI tools?</h3>
             <p className="text-sm leading-relaxed text-ink-soft">
-              Use them; we do. But the video must be you, and in the walkthrough you will explain
-              your own code and change it live in front of us. A site you cannot explain does not
-              count, however good it looks.
+              Yes: the video is meant to be made with AI, and you can use it for the code too. But
+              in the walkthrough you will explain your own code and how you made the video, and
+              change your site live in front of us. A site you cannot explain does not count,
+              however good it looks.
             </p>
           </div>
         </div>
@@ -190,7 +191,7 @@ export default function CareersPage() {
       </section>
 
       <section className="bg-ink px-4 py-16 text-center text-paper sm:px-8">
-        <h2 className="mx-auto max-w-2xl text-3xl font-extrabold text-paper md:text-4xl">Build it, film it, send it.</h2>
+        <h2 className="mx-auto max-w-2xl text-3xl font-extrabold text-paper md:text-4xl">Build the site. Make the video. Send it.</h2>
         <p className="mx-auto mt-4 max-w-xl text-paper/70">One website, one short video, two scores. That is the whole application.</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <a

@@ -46,9 +46,9 @@ export const taskSteps = [
       'Any stack, any free host: GitHub Pages, Netlify, Vercel or Cloudflare Pages. A free subdomain is fine; you do not need to buy a domain.',
   },
   {
-    title: 'Record a short video of yourself',
+    title: 'Make an AI-generated video of yourself',
     description:
-      '60 to 120 seconds, your own face and voice. Tell us about something you built (or broke and then fixed) and why you want this internship. Put it on your site: self-hosted or an unlisted YouTube embed. No AI avatars or cloned voices.',
+      'Use AI tools to make a 30 to 90 second video starring you, built from your own photo (and your voice, if you like). Have it introduce you, show something you built and say why you want this internship. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
   },
   {
     title: 'Add one thing only you could',
@@ -65,6 +65,7 @@ export const taskSteps = [
 export const sendList = [
   'Your website link and its source code (GitHub or similar)',
   'Screenshots of your Lighthouse and PageSpeed Insights scores, plus your short note',
+  'The AI tools you used for the video, in a line or two',
   'Your resume, college, degree and expected graduation month',
   'Which part of Nagpur you live in',
 ];
@@ -79,7 +80,12 @@ export const careersFAQs: FAQItem[] = [
   {
     question: 'Can I use AI tools for the task?',
     answer:
-      'Yes, we use them every day. But the video has to be you, and in the walkthrough you will explain your code and change it live. If you cannot explain a part, it does not count.',
+      'Yes. The video is meant to be made with AI, and you can use AI for the code too; we use it every day. But in the walkthrough you will explain your code and how you made the video, and change your site live. If you cannot explain a part, it does not count.',
+  },
+  {
+    question: 'Which AI tool should I use for the video?',
+    answer:
+      'Any you like; free tiers are fine. We care that it is clearly you, that it says something real about you, and that you can tell us how you made it.',
   },
   {
     question: 'I do not have a domain. Is a low SEO score a problem?',
