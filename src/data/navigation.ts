@@ -8,6 +8,7 @@ export const navLinks: NavLink[] = [
   { label: 'Services', href: '/services' },
   { label: 'About', href: '/about' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Careers', href: '/careers' },
 ];
 
 export const footerLegalLinks = [
