@@ -42,7 +42,7 @@ export const taskSteps = [
   {
     title: 'Build a website you are proud of',
     description:
-      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack, any free host (GitHub Pages, Netlify, Vercel, Cloudflare Pages); a free subdomain is fine.',
+      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack. Host it on GitHub Pages (preferred); your free yourname.github.io address is fine, no domain needed.',
   },
   {
     title: 'Show your projects properly',
@@ -88,7 +88,7 @@ export const careersFAQs: FAQItem[] = [
   {
     question: 'I do not have a domain. Is a low SEO score a problem?',
     answer:
-      'No. A free subdomain with no inbound links will not score perfectly. We care that you ran the checks, understood what they say and fixed what you could.',
+      'No. A free github.io address with no inbound links will not score perfectly. We care that you ran the checks, understood what they say and fixed what you could.',
   },
   {
     question: 'I live outside Nagpur. Can I still apply?',
