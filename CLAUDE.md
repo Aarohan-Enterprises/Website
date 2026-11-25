@@ -49,6 +49,12 @@ here. No secrets in this file — the repo is on GitHub.
 
 ## Indexing snapshot
 
+**2026-11-25** (careers page + forms relay deployed, f87f6d3; sitemap resubmitted, HTTP 204):
+- `/`, `/about/`, `/products/` — Submitted and indexed (about/products crawled 2026-11-23).
+- `/contact/`, `/pricing/` — "Discovered – currently not indexed".
+- `/careers/` — URL is unknown to Google (hours old). Re-inspect in a week; JobPosting should make it
+  eligible for Google's job search once crawled.
+
 **2026-10-30** (software-company redesign deployed, commit f8f10b5; sitemap resubmitted, HTTP 204):
 - `/` — indexed (last crawled 2026-10-19, before the redesign; recrawl pending).
 - `/pricing/`, `/products/` — "Discovered – currently not indexed". `/about/` — unknown to Google.
