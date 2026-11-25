@@ -42,7 +42,7 @@ export const taskSteps = [
   {
     title: 'Build a website you are proud of',
     description:
-      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack. Host it on GitHub Pages (preferred); your free yourname.github.io address is fine, no domain needed.',
+      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack. Host it on GitHub Pages (preferred); your free yourname.github.io address is fine, no domain needed. Bonus if it deploys itself: a GitHub Actions workflow that publishes the site on every push.',
   },
   {
     title: 'Show your projects properly',
@@ -65,20 +65,21 @@ export const siteChecklist = [
   'Your projects, each with what it does, your part, the stack and a code or demo link',
   'Your tech stack and accomplishments',
   'The AI video about your work, with a line on the tools you used',
+  'Optional: a GitHub Actions workflow that deploys it',
   'Your Lighthouse and PageSpeed Insights score screenshots and your short note',
 ];
 
 export const processSteps = [
   { title: 'Submit the form', description: 'Your website link and your resume. Everything else is on your site.' },
   { title: 'We open your site', description: 'We go through your projects, watch the video and read the code and the note.' },
-  { title: 'Walk us through it', description: 'A short call or office visit where you explain your code and make a small change to it live.' },
+  { title: 'Walk us through it', description: 'A relaxed chat, on a call or at the office, about how you built your site and how your code works.' },
 ];
 
 export const careersFAQs: FAQItem[] = [
   {
     question: 'Can I use AI tools for the task?',
     answer:
-      'Yes. The video is meant to be made with AI, and you can use AI for the code too; we use it every day. But in the walkthrough you will explain your code and how you made the video, and change your site live. If you cannot explain a part, it does not count.',
+      'Yes, of course. The video is meant to be made with AI, and you can use AI for the code too; we use it every day. When we chat, we will ask you to walk us through how you built it, so make sure you understand your code.',
   },
   {
     question: 'Which AI tool should I use for the video?',
@@ -92,7 +93,12 @@ export const careersFAQs: FAQItem[] = [
   },
   {
     question: 'I live outside Nagpur. Can I still apply?',
-    answer: 'Not for this role. It is hybrid with office days in Nagpur, so we are only taking Nagpur-based candidates.',
+    answer: 'Not for this one, sorry. It is hybrid with office days in Nagpur, so we are looking for Nagpur-based candidates.',
+  },
+  {
+    question: 'Do I need to set up CI/CD?',
+    answer:
+      'It is a nice bonus, not a must. If your site deploys itself through GitHub Actions on every push, tell us how you set it up.',
   },
   {
     question: 'I graduated already. Can I apply?',
@@ -101,6 +107,6 @@ export const careersFAQs: FAQItem[] = [
   },
   {
     question: 'How long should the task take?',
-    answer: 'A weekend is enough. Keep the site simple; we would rather see a small site you are proud of and understand than a big one you do not.',
+    answer: 'A weekend is enough. Keep it simple and enjoy it; we would rather see a small site you are proud of and understand than a big one you do not.',
   },
 ];

@@ -142,10 +142,9 @@ export default function CareersPage() {
         <div className="mt-14 border border-ink bg-band p-6 md:p-8">
           <h3 className="eyebrow mb-4">AI tools?</h3>
           <p className="max-w-3xl text-sm leading-relaxed text-ink-soft">
-            Yes: the video is meant to be made with AI, and you can use it for the code too. But
-            in the walkthrough you will explain your own code and how you made the video, and
-            change your site live in front of us. A site you cannot explain does not count,
-            however good it looks.
+            Yes, of course: the video is meant to be made with AI, and you can use it for the code
+            too. When we chat, we will ask you to walk us through how you built the site and how
+            your code works, so make sure you understand it.
           </p>
         </div>
       </Block>
