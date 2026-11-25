@@ -12,7 +12,7 @@ mailbox) and never printed. A `reply.json` written next to the application stops
 import io, json, re, smtplib, ssl, sys, zipfile
 from datetime import datetime, timezone
 from email.message import EmailMessage
-from email.utils import make_msgid, formataddr
+from email.utils import make_msgid, formataddr, parseaddr
 import boto3
 
 BUCKET = "pinecoder-form-submissions-576847308300"
@@ -53,7 +53,9 @@ def cmd_list():
 
 def smtp_settings():
     env = session.client("lambda").get_function_configuration(FunctionName="groupsync-payments")["Environment"]["Variables"]
-    return env["SMTP_HOST"], int(env.get("SMTP_PORT", 465)), env["SMTP_USER"], env["SMTP_PASSWORD"], env.get("SMTP_FROM") or env["SMTP_USER"]
+    # SMTP_FROM there is "GroupSync <contact@...>": keep only the address, or Zoho refuses the From (550 relay).
+    sender = parseaddr(env.get("SMTP_FROM") or "")[1] or env["SMTP_USER"]
+    return env["SMTP_HOST"], int(env.get("SMTP_PORT", 465)), env["SMTP_USER"], env["SMTP_PASSWORD"], sender
 
 
 def cmd_send(path, really):
@@ -78,7 +80,7 @@ def cmd_send(path, really):
         m["Subject"] = d["subject"]
         m["Message-ID"] = make_msgid(domain="pinecoder.in")
         m.set_content(d["body"])
-        conn.send_message(m)
+        conn.send_message(m, from_addr=user)
         s3.put_object(Bucket=BUCKET, Key=f"{d['prefix']}/reply.json", ContentType="application/json",
                       Body=json.dumps({"sentAt": datetime.now(timezone.utc).isoformat(), "to": d["to"],
                                        "subject": d["subject"], "messageId": m["Message-ID"]}, indent=1))
