@@ -22,7 +22,7 @@ import {
 export const metadata = pageMetadata('/careers/', {
   title: 'Careers - SDE Intern (Hybrid, Nagpur)',
   description:
-    'Aarohan Enterprises is hiring a full-time SDE intern in Nagpur, hybrid. Final-semester students preferred. Apply by publishing your own website with an AI-generated video of yourself.',
+    'Aarohan Enterprises is hiring a full-time SDE intern in Nagpur, hybrid. Final-semester students preferred. Apply with a portfolio website of your projects, stack and accomplishments, plus an AI-generated video about your work.',
 });
 
 const waLink = `${siteConfig.whatsapp}?text=${encodeURIComponent('Hi, I have a question about the SDE intern role')}`;
@@ -35,7 +35,7 @@ const jobSchema = {
     '<p>Aarohan Enterprises is hiring a full-time Software Development Engineer (SDE) intern. Hybrid: office days in Nagpur plus remote days. Nagpur-based candidates only. Final-semester students who can do this as their final-semester internship are preferred.</p>',
     `<p><strong>What you will do:</strong></p><ul>${work.map((w) => `<li>${w.title}: ${w.description}</li>`).join('')}</ul>`,
     `<p><strong>Who we are looking for:</strong></p><ul>${lookingFor.map((l) => `<li>${l}</li>`).join('')}</ul>`,
-    `<p><strong>How to apply:</strong> build and publish your own website with a short AI-generated video of yourself, run Lighthouse and PageSpeed Insights on it, and submit your website link and resume with the form on this page.</p>`,
+    `<p><strong>How to apply:</strong> build and publish a portfolio website of your projects, tech stack and accomplishments with a short AI-generated video about your work, run Lighthouse and PageSpeed Insights on it, and submit your website link and resume with the form on this page.</p>`,
   ].join(''),
   datePosted: DATE_POSTED,
   employmentType: ['INTERN', 'FULL_TIME'],
@@ -124,7 +124,7 @@ export default function CareersPage() {
       <Block id="task">
         <SectionHead
           title="The task: your own corner of the internet"
-          lead="Instead of a coding quiz, show us something you made and put your name on. It is easy on purpose: it is about you, not puzzles."
+          lead="Instead of a coding quiz, show us something you made and put your name on. It is easy on purpose: it is about your work, not puzzles."
         />
         <ol className="mt-10 grid gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
           {taskSteps.map((s, i) => (

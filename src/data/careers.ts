@@ -40,19 +40,19 @@ export const lookingFor = [
 
 export const taskSteps = [
   {
-    title: 'Build and publish your own website',
+    title: 'Build and publish your portfolio website',
     description:
-      'Any stack, any free host: GitHub Pages, Netlify, Vercel or Cloudflare Pages. A free subdomain is fine; you do not need to buy a domain.',
+      'A site about your work: your past projects, your tech stack and your accomplishments. Any stack, any free host: GitHub Pages, Netlify, Vercel or Cloudflare Pages. A free subdomain is fine. No photo of yourself; leave it out.',
   },
   {
-    title: 'Make an AI-generated video of yourself',
+    title: 'Show your projects properly',
     description:
-      'Use AI tools to make a 30 to 90 second video starring you, built from your own photo (and your voice, if you like). Have it introduce you, show something you built and say why you want this internship. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
+      'For each project: what it does, what you built yourself, the stack, and a link to the code or a live demo. Then your accomplishments: internships, hackathons, ranks, certifications, anything you are proud of.',
   },
   {
-    title: 'Add one thing only you could',
+    title: 'Make an AI-generated video about your work',
     description:
-      'A project you made, a photo you took, a page about your corner of Nagpur. Something that is clearly yours.',
+      'Use AI tools to make a 30 to 90 second video that presents your projects, your stack and why you want this internship. No picture of you in it. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
   },
   {
     title: 'Run SEO checks and tell us the score',
@@ -62,14 +62,15 @@ export const taskSteps = [
 ];
 
 export const siteChecklist = [
-  'The AI video of you, with a line on the tools you used',
+  'Your projects, each with what it does, your part, the stack and a code or demo link',
+  'Your tech stack and accomplishments',
+  'The AI video about your work, with a line on the tools you used',
   'Your Lighthouse and PageSpeed Insights score screenshots and your short note',
-  'The one personal thing',
 ];
 
 export const processSteps = [
   { title: 'Submit the form', description: 'Your website link and your resume. Everything else is on your site.' },
-  { title: 'We open your site', description: 'We watch the video, read the code and the note.' },
+  { title: 'We open your site', description: 'We go through your projects, watch the video and read the code and the note.' },
   { title: 'Walk us through it', description: 'A short call or office visit where you explain your code and make a small change to it live.' },
 ];
 
@@ -82,7 +83,7 @@ export const careersFAQs: FAQItem[] = [
   {
     question: 'Which AI tool should I use for the video?',
     answer:
-      'Any you like; free tiers are fine. We care that it is clearly you, that it says something real about you, and that you can tell us how you made it.',
+      'Any you like; free tiers are fine. We care that it is about your real projects, that it does not show your picture, and that you can tell us how you made it.',
   },
   {
     question: 'I do not have a domain. Is a low SEO score a problem?',
