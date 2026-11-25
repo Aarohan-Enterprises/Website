@@ -6,7 +6,7 @@ import { MainLayout } from '@/components/layouts';
 import { FAQAccordion } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 import { contactFAQs } from '@/data/faq';
-import { sendToTelegram, formatContactMessage } from '@/lib/telegram';
+import { postForm } from '@/lib/forms';
 import { isValidPhone } from '@/lib/utils';
 import { ArrowRight, Phone, Mail, MapPin, Check, Loader2, Shield, PhoneOff, Clock } from 'lucide-react';
 
@@ -41,11 +41,11 @@ export default function ContactPage() {
       return;
     }
     setSubmitting(true);
-    const sent = await sendToTelegram(formatContactMessage(formData));
-    if (sent) {
+    const sent = await postForm({ kind: 'contact', ...formData });
+    if (sent.ok) {
       setSuccess(true);
     } else {
-      setError('We could not send your message. Please email contact@pinecoder.in or use WhatsApp.');
+      setError(sent.error || 'We could not send your message. Please email contact@pinecoder.in or use WhatsApp.');
     }
     setSubmitting(false);
   };

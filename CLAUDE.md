@@ -1,6 +1,6 @@
 # pinecoder.in — Aarohan Enterprises website
 
-Company marketing site for Aarohan Enterprises at the root of **pinecoder.in**. Positioning (redesigned 2026-10-30, branch `software-company-redesign`, not yet deployed): a **software company**, led by business operations, then data and analytics, then user convenience; custom work is quoted per project (no published prices); eight own SaaS products; three anonymised private-client systems (freight operations, real-time market data platform, gaming cafe). Look: blueprint / drafting-sheet, navy and gold from the logo, Archivo + IBM Plex Mono. Pages: `/`, `/products/`, `/services/`, `/about/`, `/pricing/`, `/contact/`, `/careers/`, privacy, terms, refund. `/careers/` (added 2026-11-25) is the SDE-intern opening: copy lives in `src/data/careers.ts`, page emits `JobPosting` + `FAQPage` JSON-LD. Applications go by email to contact@ (no form). When the role closes, remove the page (or the JobPosting schema) so Google for Jobs stops listing it. `/tools/`, `/assessment/`, `/disclaimer/` are static redirect stubs in `public/` (not in the sitemap). Ownership wording must stay "agreed per project", never "you own 100% of the code". (product
+Company marketing site for Aarohan Enterprises at the root of **pinecoder.in**. Positioning (redesigned 2026-10-30, branch `software-company-redesign`, not yet deployed): a **software company**, led by business operations, then data and analytics, then user convenience; custom work is quoted per project (no published prices); eight own SaaS products; three anonymised private-client systems (freight operations, real-time market data platform, gaming cafe). Look: blueprint / drafting-sheet, navy and gold from the logo, Archivo + IBM Plex Mono. Pages: `/`, `/products/`, `/services/`, `/about/`, `/pricing/`, `/contact/`, `/careers/`, privacy, terms, refund. `/careers/` (added 2026-11-25) is the SDE-intern opening: copy lives in `src/data/careers.ts`, page emits `JobPosting` + `FAQPage` JSON-LD. Applications come in through the on-page form (website link + optional code link + resume upload; no name/contact fields, the resume has them). Buttons scroll with JS (`ScrollButton`), so no `#task` fragments in the URL. When the role closes, remove the page (or the JobPosting schema) so Google for Jobs stops listing it. `/tools/`, `/assessment/`, `/disclaimer/` are static redirect stubs in `public/` (not in the sitemap). Ownership wording must stay "agreed per project", never "you own 100% of the code". (product
 subdomains like alertsync / groupsync / section63 are separate repos). Workspace-wide SEO/DNS
 rules live in `..\.claude\CLAUDE.md` (outside this repo); this file covers only what is specific
 here. No secrets in this file — the repo is on GitHub.
@@ -13,6 +13,20 @@ here. No secrets in this file — the repo is on GitHub.
   to GitHub Pages. Custom domain via `public/CNAME` (`pinecoder.in`). Usually live 1–3 min
   after the workflow finishes.
 - DNS: Cloudflare zone `pinecoder.in`, apex A records → GitHub Pages IPs (185.199.108–111.153), DNS-only.
+
+## Forms → Telegram (relay)
+
+- `/contact/` and the `/careers/` apply form POST JSON to the **`pinecoder-forms` Lambda Function URL**
+  (`src/lib/forms.ts`; source + tests + deploy in `forms-relay/`). It validates (resume sniffed by bytes:
+  PDF/DOC/DOCX ≤ 4 MB; honeypot `company`), then calls Telegram `sendMessage` / `sendDocument` as
+  **@AarohanEnt_ClientReg_Bot** into the owner's private chat.
+- AWS account 576847308300 (profile `cmroot`), ap-south-1, role `pinecoder-forms-lambda`. Redeploy:
+  `bash forms-relay/deploy.sh` (runs the tests, reads the token from the repo's GitHub Actions variables
+  `NEXT_PUBLIC_TELEGRAM_BOT_TOKEN` / `NEXT_PUBLIC_TELEGRAM_CHAT_ID` and writes them into the Lambda env;
+  the names are legacy, they are NOT passed to the site build any more).
+- **The bot token must never go back into the browser bundle.** History: from the 2026-02-25 Next.js
+  rewrite until 2026-11-25 the workflow read `vars.TELEGRAM_BOT_TOKEN` (wrong name), so the live contact
+  form shipped with no token and failed on every submit for ~9 months. Fixed by the relay.
 
 ## SEO specifics
 

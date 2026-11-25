@@ -1,19 +1,20 @@
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { pageMetadata } from '@/lib/metadata';
 import { MainLayout } from '@/components/layouts';
 import { BackToTop, FAQAccordion } from '@/components/ui';
 import { WhatsAppIcon } from '@/components/ui/BrandIcons';
 import { Block, SectionHead } from '@/components/sections';
 import { siteConfig } from '@/data/seo';
+import { ApplyForm } from '@/components/careers/ApplyForm';
+import { ScrollButton } from '@/components/careers/ScrollButton';
 import {
   APPLY_EMAIL,
-  APPLY_SUBJECT,
   DATE_POSTED,
   role,
   work,
   lookingFor,
   taskSteps,
-  sendList,
+  siteChecklist,
   processSteps,
   careersFAQs,
 } from '@/data/careers';
@@ -24,7 +25,6 @@ export const metadata = pageMetadata('/careers/', {
     'Aarohan Enterprises is hiring a full-time SDE intern in Nagpur, hybrid. Final-semester students preferred. Apply by publishing your own website with an AI-generated video of yourself.',
 });
 
-const mailto = `mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(APPLY_SUBJECT)}`;
 const waLink = `${siteConfig.whatsapp}?text=${encodeURIComponent('Hi, I have a question about the SDE intern role')}`;
 
 const jobSchema = {
@@ -35,7 +35,7 @@ const jobSchema = {
     '<p>Aarohan Enterprises is hiring a full-time Software Development Engineer (SDE) intern. Hybrid: office days in Nagpur plus remote days. Nagpur-based candidates only. Final-semester students who can do this as their final-semester internship are preferred.</p>',
     `<p><strong>What you will do:</strong></p><ul>${work.map((w) => `<li>${w.title}: ${w.description}</li>`).join('')}</ul>`,
     `<p><strong>Who we are looking for:</strong></p><ul>${lookingFor.map((l) => `<li>${l}</li>`).join('')}</ul>`,
-    `<p><strong>How to apply:</strong> build and publish your own website with a short AI-generated video of yourself, run Lighthouse and PageSpeed Insights on it, and email the link, scores and your resume to ${APPLY_EMAIL}.</p>`,
+    `<p><strong>How to apply:</strong> build and publish your own website with a short AI-generated video of yourself, run Lighthouse and PageSpeed Insights on it, and submit your website link and resume with the form on this page.</p>`,
   ].join(''),
   datePosted: DATE_POSTED,
   employmentType: ['INTERN', 'FULL_TIME'],
@@ -55,7 +55,7 @@ const jobSchema = {
       addressCountry: 'IN',
     },
   },
-  directApply: false,
+  directApply: true,
 };
 
 const faqSchema = {
@@ -90,12 +90,12 @@ export default function CareersPage() {
           ))}
         </dl>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="#task" className="btn-primary">
+          <ScrollButton target="task" className="btn-primary">
             See the task <ArrowRight size={16} />
-          </a>
-          <a href={mailto} className="btn-ghost">
-            <Mail size={16} /> {APPLY_EMAIL}
-          </a>
+          </ScrollButton>
+          <ScrollButton target="apply" className="btn-ghost">
+            Apply now
+          </ScrollButton>
         </div>
       </Block>
 
@@ -139,35 +139,43 @@ export default function CareersPage() {
           ))}
         </ol>
 
-        <div className="mt-14 grid gap-px border border-ink bg-ink lg:grid-cols-2">
-          <div className="bg-surface p-6 md:p-8">
-            <h3 className="eyebrow mb-4">Send us</h3>
+        <div className="mt-14 border border-ink bg-band p-6 md:p-8">
+          <h3 className="eyebrow mb-4">AI tools?</h3>
+          <p className="max-w-3xl text-sm leading-relaxed text-ink-soft">
+            Yes: the video is meant to be made with AI, and you can use it for the code too. But
+            in the walkthrough you will explain your own code and how you made the video, and
+            change your site live in front of us. A site you cannot explain does not count,
+            however good it looks.
+          </p>
+        </div>
+      </Block>
+
+      <Block id="apply" tone="band">
+        <div className="grid gap-px border border-ink bg-ink lg:grid-cols-5">
+          <div className="bg-surface p-6 md:p-10 lg:col-span-3">
+            <p className="eyebrow mb-2">Apply</p>
+            <h2 className="mb-6 text-2xl font-extrabold text-ink md:text-3xl">Send your website and resume</h2>
+            <ApplyForm />
+          </div>
+          <div className="bg-paper p-6 md:p-8 lg:col-span-2">
+            <h3 className="eyebrow mb-4">Before you submit, your site should have</h3>
             <ul className="space-y-2 text-sm text-ink-soft">
-              {sendList.map((s) => (
+              {siteChecklist.map((s) => (
                 <li key={s} className="flex gap-3">
                   <span className="font-mono text-gold" aria-hidden="true">→</span>
                   <span>{s}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-sm text-ink-soft">
-              Email <a href={mailto} className="link-underline">{APPLY_EMAIL}</a> with the subject{' '}
-              <span className="font-mono text-ink">&ldquo;{APPLY_SUBJECT}&rdquo;</span>.
-            </p>
-          </div>
-          <div className="bg-band p-6 md:p-8">
-            <h3 className="eyebrow mb-4">AI tools?</h3>
-            <p className="text-sm leading-relaxed text-ink-soft">
-              Yes: the video is meant to be made with AI, and you can use it for the code too. But
-              in the walkthrough you will explain your own code and how you made the video, and
-              change your site live in front of us. A site you cannot explain does not count,
-              however good it looks.
+            <p className="mt-6 text-sm text-ink-soft">
+              Trouble with the form? Email{' '}
+              <a href={`mailto:${APPLY_EMAIL}`} className="link-underline">{APPLY_EMAIL}</a>.
             </p>
           </div>
         </div>
       </Block>
 
-      <Block tone="band">
+      <Block>
         <SectionHead title="What happens after you send it" />
         <ol className="mt-10 grid gap-x-6 gap-y-8 md:grid-cols-3">
           {processSteps.map((s, i) => (
@@ -194,12 +202,12 @@ export default function CareersPage() {
         <h2 className="mx-auto max-w-2xl text-3xl font-extrabold text-paper md:text-4xl">Build the site. Make the video. Send it.</h2>
         <p className="mx-auto mt-4 max-w-xl text-paper/70">One website, one short video, two scores. That is the whole application.</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <a
-            href={mailto}
+          <ScrollButton
+            target="apply"
             className="inline-flex items-center justify-center gap-2 bg-paper px-7 py-3.5 font-semibold text-ink transition-colors hover:bg-gold-bright"
           >
-            <Mail size={16} /> Send your application
-          </a>
+            Apply now <ArrowRight size={16} />
+          </ScrollButton>
           <a
             href={waLink}
             target="_blank"

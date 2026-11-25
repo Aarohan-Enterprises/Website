@@ -1,7 +1,6 @@
 import type { FAQItem } from '@/data/faq';
 
 export const APPLY_EMAIL = 'contact@pinecoder.in';
-export const APPLY_SUBJECT = 'SDE Intern - Your Name';
 export const DATE_POSTED = '2026-11-25';
 
 export const role = {
@@ -58,20 +57,18 @@ export const taskSteps = [
   {
     title: 'Run SEO checks and tell us the score',
     description:
-      'Run Lighthouse (Chrome DevTools, mobile) and Google PageSpeed Insights on your site and screenshot the scores. A low score is fine: without a domain or links you will not get 100. In 150 words or less, tell us what pulls it down, what you fixed and what you would fix next.',
+      'Run Lighthouse (Chrome DevTools, mobile) and Google PageSpeed Insights on your site and screenshot the scores. A low score is fine: without a domain or links you will not get 100. In 150 words or less, tell us what pulls it down, what you fixed and what you would fix next. Put the screenshots and the note on your site.',
   },
 ];
 
-export const sendList = [
-  'Your website link and its source code (GitHub or similar)',
-  'Screenshots of your Lighthouse and PageSpeed Insights scores, plus your short note',
-  'The AI tools you used for the video, in a line or two',
-  'Your resume, college, degree and expected graduation month',
-  'Which part of Nagpur you live in',
+export const siteChecklist = [
+  'The AI video of you, with a line on the tools you used',
+  'Your Lighthouse and PageSpeed Insights score screenshots and your short note',
+  'The one personal thing',
 ];
 
 export const processSteps = [
-  { title: 'Send the task', description: 'Email the website and everything in the list below.' },
+  { title: 'Submit the form', description: 'Your website link and your resume. Everything else is on your site.' },
   { title: 'We open your site', description: 'We watch the video, read the code and the note.' },
   { title: 'Walk us through it', description: 'A short call or office visit where you explain your code and make a small change to it live.' },
 ];
