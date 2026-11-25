@@ -40,9 +40,9 @@ export const lookingFor = [
 
 export const taskSteps = [
   {
-    title: 'Build and publish your portfolio website',
+    title: 'Build a website you are proud of',
     description:
-      'A site about your work: your past projects, your tech stack and your accomplishments. Any stack, any free host: GitHub Pages, Netlify, Vercel or Cloudflare Pages. A free subdomain is fine. No photo of yourself; leave it out.',
+      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack, any free host (GitHub Pages, Netlify, Vercel, Cloudflare Pages); a free subdomain is fine. No photo of yourself; leave it out.',
   },
   {
     title: 'Show your projects properly',
@@ -101,6 +101,6 @@ export const careersFAQs: FAQItem[] = [
   },
   {
     question: 'How long should the task take?',
-    answer: 'A weekend is enough. Keep the site simple; we would rather see a small site you understand than a big one you do not.',
+    answer: 'A weekend is enough. Keep the site simple; we would rather see a small site you are proud of and understand than a big one you do not.',
   },
 ];

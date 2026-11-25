@@ -123,8 +123,8 @@ export default function CareersPage() {
 
       <Block id="task">
         <SectionHead
-          title="The task: your own corner of the internet"
-          lead="Instead of a coding quiz, show us something you made and put your name on. It is easy on purpose: it is about your work, not puzzles."
+          title="The task: build something you are proud of"
+          lead="Instead of a coding quiz, build a website that is personal to you and that you are proud to show: your projects, your stack, your accomplishments. It is easy on purpose: it is about your work, not puzzles."
         />
         <ol className="mt-10 grid gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
           {taskSteps.map((s, i) => (
