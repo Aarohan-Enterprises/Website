@@ -1,6 +1,7 @@
 // pinecoder-forms: relays pinecoder.in form submissions to Telegram (@AarohanEnt_ClientReg_Bot).
 // Runs as a Lambda Function URL so the bot token never reaches the browser.
-// Env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID. Node 20+, no dependencies.
+// Env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, ARCHIVE_BUCKET (private S3 copy of every submission).
+// Node 20+; the only import is the AWS SDK v3 that the Lambda runtime ships.
 //
 // POST JSON:
 //   { kind: 'contact', name, email, phone, service, model?, message? }
@@ -95,6 +96,28 @@ export function validate(body) {
   return { error: 'Bad request.' };
 }
 
+/** S3 key prefix for one submission: <kind>/<UTC timestamp>-<8 hex>. */
+export function archivePrefix(kind, now = new Date(), rand = crypto.randomUUID()) {
+  return `${kind === 'contact' ? 'contacts' : 'applications'}/${now.toISOString().replace(/[:.]/g, '-')}-${rand.slice(0, 8)}`;
+}
+
+let s3;
+/** Save the submission (and the resume) to the private archive bucket. Returns the prefix, or null when not configured. */
+async function archive(v, ip) {
+  const bucket = process.env.ARCHIVE_BUCKET;
+  if (!bucket) return null;
+  const { S3Client, PutObjectCommand } = await import('@aws-sdk/client-s3');
+  s3 ||= new S3Client({});
+  const prefix = archivePrefix(v.kind);
+  const meta = v.kind === 'contact'
+    ? { ...v.f }
+    : { website: v.website, code: v.code || null, resume: v.filename, resumeType: v.k.type, resumeBytes: v.buf.length };
+  const put = (Key, Body, ContentType) => s3.send(new PutObjectCommand({ Bucket: bucket, Key, Body, ContentType }));
+  if (v.kind === 'application') await put(`${prefix}/${v.filename}`, v.buf, v.k.type);
+  await put(`${prefix}/submission.json`, JSON.stringify({ kind: v.kind, receivedAt: new Date().toISOString(), ip, ...meta }, null, 1), 'application/json');
+  return prefix;
+}
+
 const res = (statusCode, obj) => ({
   statusCode,
   headers: { 'content-type': 'application/json' },
@@ -118,25 +141,38 @@ export async function handler(event) {
   if (v.spam) return res(200, { ok: true });
   if (v.error) return res(400, { ok: false, error: v.error });
 
+  let saved = null;
+  try {
+    saved = await archive(v, ip);
+  } catch (e) {
+    console.error('archive failed:', e.message);
+  }
+  const savedLine = saved ? `\n🗂 Saved: ${saved}` : '';
+
   try {
     if (v.kind === 'contact') {
       const f = v.f;
       await sendText(
-        `📩 New contact form submission\n\n👤 ${f.name}\n📧 ${f.email}\n📱 ${f.phone}\n🛠 ${f.service}\n📦 ${f.model || 'Not specified'}\n\n💬 ${f.message || 'No message'}\n\n— pinecoder.in/contact/`,
+        `📩 New contact form submission\n\n👤 ${f.name}\n📧 ${f.email}\n📱 ${f.phone}\n🛠 ${f.service}\n📦 ${f.model || 'Not specified'}\n\n💬 ${f.message || 'No message'}${savedLine}\n\n— pinecoder.in/contact/`,
       );
     } else {
       const caption =
-        `🧑‍💻 SDE intern application\n\n🌐 Website: ${v.website}\n💻 Code: ${v.code || 'not given'}\n📄 Resume: ${v.filename}\n\n— pinecoder.in/careers/`;
+        `🧑‍💻 SDE intern application\n\n🌐 Website: ${v.website}\n💻 Code: ${v.code || 'not given'}\n📄 Resume: ${v.filename}${savedLine}\n\n— pinecoder.in/careers/`;
       const fd = new FormData();
       fd.append('chat_id', CHAT);
       fd.append('caption', caption.slice(0, 1024));
       fd.append('document', new Blob([v.buf], { type: v.k.type }), v.filename);
       await tg('sendDocument', fd);
     }
-    console.log(JSON.stringify({ kind: v.kind, ip }));
+    console.log(JSON.stringify({ kind: v.kind, ip, saved }));
     return res(200, { ok: true });
   } catch (e) {
     console.error(e.message);
+    // Telegram failed, but the submission is safe in S3: tell the sender it went through.
+    if (saved) {
+      console.log(JSON.stringify({ kind: v.kind, ip, saved, telegram: 'failed' }));
+      return res(200, { ok: true });
+    }
     return res(502, { ok: false, error: 'We could not deliver your submission. Please email contact@pinecoder.in.' });
   }
 }

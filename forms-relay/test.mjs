@@ -1,6 +1,6 @@
 // Offline checks for the relay's validation. Run: node forms-relay/test.mjs
 import assert from 'node:assert/strict';
-import { validate, cleanUrl, resumeKind, safeFilename, MAX_RESUME_BYTES } from './index.mjs';
+import { validate, cleanUrl, resumeKind, safeFilename, archivePrefix, MAX_RESUME_BYTES } from './index.mjs';
 
 const pdf = Buffer.from('%PDF-1.7\n...').toString('base64');
 const exe = Buffer.from('MZ\x90\x00 not a resume').toString('base64');
@@ -33,5 +33,8 @@ const c = validate({ kind: 'contact', name: 'A', email: 'a@b.co', phone: '987654
 assert.equal(c.kind, 'contact');
 assert.ok(validate({ kind: 'contact', name: 'A', email: 'bad', phone: '1', service: 'x' }).error);
 assert.ok(validate({ kind: 'nope' }).error);
+
+assert.equal(archivePrefix('application', new Date('2026-11-25T07:12:06.723Z'), 'abcdef12-xxxx'), 'applications/2026-11-25T07-12-06-723Z-abcdef12');
+assert.equal(archivePrefix('contact', new Date('2026-11-25T07:12:06.723Z'), '0123456789'), 'contacts/2026-11-25T07-12-06-723Z-01234567');
 
 console.log('forms-relay: all checks passed');

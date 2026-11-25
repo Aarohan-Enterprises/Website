@@ -7,6 +7,8 @@ set -euo pipefail
 export MSYS_NO_PATHCONV=1 AWS_PROFILE=cmroot AWS_REGION=ap-south-1 AWS_PAGER=""
 FN=pinecoder-forms
 ROLE=pinecoder-forms-lambda
+BUCKET=pinecoder-form-submissions-576847308300   # private archive of every submission (resumes = personal data)
+KEEP_DAYS=365                                     # lifecycle: objects auto-delete after this many days
 # Windows paths for native tools (MSYS path conversion is off above).
 winpath() { if command -v cygpath >/dev/null; then cygpath -m "$1"; else echo "$1"; fi; }
 HERE="$(winpath "$(cd "$(dirname "$0")" && pwd)")"
@@ -22,11 +24,21 @@ if ! aws iam get-role --role-name "$ROLE" >/dev/null 2>&1; then
 fi
 ROLE_ARN=$(aws iam get-role --role-name "$ROLE" --query Role.Arn --output text)
 
-python - "$TMP/env.json" <<'PY'
-import json, subprocess, sys
+# Private archive bucket: no public access, encrypted, auto-expiring.
+if ! aws s3api head-bucket --bucket "$BUCKET" >/dev/null 2>&1; then
+  aws s3api create-bucket --bucket "$BUCKET" --create-bucket-configuration LocationConstraint="$AWS_REGION" >/dev/null
+fi
+aws s3api put-public-access-block --bucket "$BUCKET" --public-access-block-configuration   BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
+aws s3api put-bucket-encryption --bucket "$BUCKET" --server-side-encryption-configuration   '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
+aws s3api put-bucket-lifecycle-configuration --bucket "$BUCKET" --lifecycle-configuration   "{\"Rules\":[{\"ID\":\"expire\",\"Status\":\"Enabled\",\"Filter\":{\"Prefix\":\"\"},\"Expiration\":{\"Days\":$KEEP_DAYS}}]}"
+aws iam put-role-policy --role-name "$ROLE" --policy-name archive-write --policy-document   "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:PutObject\",\"Resource\":\"arn:aws:s3:::$BUCKET/*\"}]}"
+
+BUCKET="$BUCKET" python - "$TMP/env.json" <<'PY'
+import json, os, subprocess, sys
 get = lambda n: subprocess.check_output(["gh", "variable", "get", n], text=True).strip()
 json.dump({"Variables": {"TELEGRAM_BOT_TOKEN": get("NEXT_PUBLIC_TELEGRAM_BOT_TOKEN"),
-                         "TELEGRAM_CHAT_ID": get("NEXT_PUBLIC_TELEGRAM_CHAT_ID")}}, open(sys.argv[1], "w"))
+                         "TELEGRAM_CHAT_ID": get("NEXT_PUBLIC_TELEGRAM_CHAT_ID"),
+                         "ARCHIVE_BUCKET": os.environ["BUCKET"]}}, open(sys.argv[1], "w"))
 PY
 
 (cd "$HERE" && python -c "import zipfile; z=zipfile.ZipFile(r'$TMP/fn.zip','w',zipfile.ZIP_DEFLATED); z.write('index.mjs'); z.close()")

@@ -20,6 +20,11 @@ here. No secrets in this file — the repo is on GitHub.
   (`src/lib/forms.ts`; source + tests + deploy in `forms-relay/`). It validates (resume sniffed by bytes:
   PDF/DOC/DOCX ≤ 4 MB; honeypot `company`), then calls Telegram `sendMessage` / `sendDocument` as
   **@AarohanEnt_ClientReg_Bot** into the owner's private chat.
+- **Every submission is also archived** (since 2026-11-25) to private bucket
+  `pinecoder-form-submissions-576847308300` (public access blocked, SSE-S3, objects expire after 365 days):
+  `applications/<UTC ts>-<id>/{submission.json,<resume>}` and `contacts/<UTC ts>-<id>/submission.json`.
+  The Telegram message carries the `Saved:` prefix. If Telegram fails but S3 saved, the sender still gets OK.
+  Read them: `aws s3 ls s3://pinecoder-form-submissions-576847308300/applications/ --recursive --profile cmroot`.
 - AWS account 576847308300 (profile `cmroot`), ap-south-1, role `pinecoder-forms-lambda`. Redeploy:
   `bash forms-relay/deploy.sh` (runs the tests, reads the token from the repo's GitHub Actions variables
   `NEXT_PUBLIC_TELEGRAM_BOT_TOKEN` / `NEXT_PUBLIC_TELEGRAM_CHAT_ID` and writes them into the Lambda env;
