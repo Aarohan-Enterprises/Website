@@ -8,14 +8,16 @@ drafts.json = [{"prefix": "applications/<ts>-<id>", "to": "...", "subject": "...
 Keep drafts OUT of this repo (they hold candidates' emails): Aarohan/hiring/ is the place.
 SMTP settings are read at send time from the groupsync-payments Lambda's environment (same Zoho
 mailbox) and never printed. A `reply.json` written next to the application stops a second send.
+Zoho keeps a copy of each sent mail in Sent; the tool moves those copies into the "Intern Hiring" folder.
 """
-import io, json, re, smtplib, ssl, sys, zipfile
+import imaplib, io, json, re, smtplib, ssl, sys, time, zipfile
 from datetime import datetime, timezone
 from email.message import EmailMessage
 from email.utils import make_msgid, formataddr, parseaddr
 import boto3
 
 BUCKET = "pinecoder-form-submissions-576847308300"
+HIRING_FOLDER = "Intern Hiring"   # mailbox folder for everything hiring (owner's rule, 2026-11-25)
 session = boto3.Session(profile_name="cmroot", region_name="ap-south-1")
 s3 = session.client("s3")
 
@@ -81,12 +83,34 @@ def cmd_send(path, really):
         m["Message-ID"] = make_msgid(domain="pinecoder.in")
         m.set_content(d["body"])
         conn.send_message(m, from_addr=user)
+        d["_mid"] = m["Message-ID"]
         s3.put_object(Bucket=BUCKET, Key=f"{d['prefix']}/reply.json", ContentType="application/json",
                       Body=json.dumps({"sentAt": datetime.now(timezone.utc).isoformat(), "to": d["to"],
                                        "subject": d["subject"], "messageId": m["Message-ID"]}, indent=1))
         print("SENT", d["to"])
-    if conn: conn.quit()
+    if conn:
+        conn.quit()
+        file_sent([d.get("_mid") for d in drafts if d.get("_mid")])
     if not really: print("(dry run: add --really to send)")
+
+
+def file_sent(message_ids):
+    """Move Zoho's Sent copies of these messages into the hiring folder (Zoho files them a moment after sending)."""
+    host, _, user, pw, _ = smtp_settings()
+    M = imaplib.IMAP4_SSL(host.replace("smtp", "imap"), 993, ssl_context=ssl.create_default_context())
+    M.login(user, pw)
+    M.select('"Sent"')
+    for mid in message_ids:
+        for _ in range(10):
+            typ, ids = M.uid("SEARCH", None, "HEADER", "Message-ID", mid)
+            if ids[0]: break
+            time.sleep(2)
+        if ids[0]:
+            M.uid("MOVE", ids[0].replace(b" ", b","), f'"{HIRING_FOLDER}"')
+            print("filed in", HIRING_FOLDER, mid)
+        else:
+            print("not found in Sent (left as is):", mid)
+    M.logout()
 
 
 if __name__ == "__main__":

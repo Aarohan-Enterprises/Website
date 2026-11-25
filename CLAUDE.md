@@ -29,6 +29,9 @@ here. No secrets in this file — the repo is on GitHub.
   `python forms-relay/reply.py send <drafts.json> [--really]` (Zoho SMTP from contact@pinecoder.in, settings read from the
   groupsync-payments Lambda env; writes `reply.json` beside the application so nobody is mailed twice). Drafts hold
   candidates' emails: keep them in `Aarohan/hiring/`, never in this repo. Send only after the owner approves the text.
+  Everything hiring in the contact@ mailbox lives in the **"Intern Hiring"** folder (owner's rule): reply.py moves Zoho's
+  Sent copies there itself; move inbound candidate mail there too. Zoho auto-saves SMTP sends to Sent, so never IMAP-append
+  a second copy.
 - **Every submission is also archived** (since 2026-11-25) to private bucket
   `pinecoder-form-submissions-576847308300` (public access blocked, SSE-S3, objects expire after 365 days):
   `applications/<UTC ts>-<id>/{submission.json,<resume>}` and `contacts/<UTC ts>-<id>/submission.json`.
