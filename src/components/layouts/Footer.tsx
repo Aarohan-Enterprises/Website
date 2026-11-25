@@ -11,7 +11,7 @@ export function Footer() {
           © {new Date().getFullYear()} Aarohan Enterprises · pinecoder.in
         </span>
       </div>
-      <nav className="flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs uppercase tracking-wider" aria-label="Legal">
+      <nav className="flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs uppercase tracking-wider" aria-label="Footer">
         {footerLegalLinks.map((link) => (
           <Link key={link.href} href={link.href} className="text-ink-faint transition-colors hover:text-ink">
             {link.label}
