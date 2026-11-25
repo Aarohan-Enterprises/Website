@@ -42,7 +42,7 @@ export const taskSteps = [
   {
     title: 'Build a website you are proud of',
     description:
-      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack, any free host (GitHub Pages, Netlify, Vercel, Cloudflare Pages); a free subdomain is fine. No photo of yourself; leave it out.',
+      'Personal to you: your past projects, your tech stack and your accomplishments, in a design you chose. Not a template with your name swapped in. Any stack, any free host (GitHub Pages, Netlify, Vercel, Cloudflare Pages); a free subdomain is fine.',
   },
   {
     title: 'Show your projects properly',
@@ -52,7 +52,7 @@ export const taskSteps = [
   {
     title: 'Make an AI-generated video about your work',
     description:
-      'Use AI tools to make a 30 to 90 second video that presents your projects, your stack and why you want this internship. No picture of you in it. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
+      'Use AI tools to make a 30 to 90 second video that presents your projects, your stack and why you want this internship. Put it on your site, self-hosted or as an unlisted YouTube embed, with a line on which tools you used and how.',
   },
   {
     title: 'Run SEO checks and tell us the score',
@@ -83,7 +83,7 @@ export const careersFAQs: FAQItem[] = [
   {
     question: 'Which AI tool should I use for the video?',
     answer:
-      'Any you like; free tiers are fine. We care that it is about your real projects, that it does not show your picture, and that you can tell us how you made it.',
+      'Any you like; free tiers are fine. We care that it is about your real projects and that you can tell us how you made it.',
   },
   {
     question: 'I do not have a domain. Is a low SEO score a problem?',
