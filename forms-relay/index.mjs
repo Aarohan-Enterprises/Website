@@ -16,7 +16,9 @@ const TG = `https://api.telegram.org/bot${TOKEN}`;
 export const MAX_RESUME_BYTES = 4 * 1024 * 1024;
 
 /** Every box on the careers form must be ticked; keys match src/data/careers.ts applyChecks. */
-export const APPLY_CHECKS = ['nagpur', 'finalSem', 'site', 'video', 'seo', 'privacy'];
+export const APPLY_CHECKS = ['nagpur', 'task'];
+// TRANSITION ONLY: the six-box form still open in browsers. Remove once the two-box site is live.
+const LEGACY_CHECKS = ['nagpur', 'finalSem', 'site', 'video', 'seo', 'privacy'];
 const CAPTCHA_HOSTS = ['pinecoder.in', 'localhost'];
 
 // Per-container throttle: a light brake on scripted floods, not real auth.
@@ -116,7 +118,8 @@ export function validate(body) {
     if (!video) return { error: 'Please enter the link to your AI-generated video.' };
     if (code === null) return { error: 'The source code link does not look like a web address.' };
     const checks = body.checks && typeof body.checks === 'object' ? body.checks : {};
-    if (!APPLY_CHECKS.every((k) => checks[k] === true)) return { error: 'Please tick every box before you submit.' };
+    const ticked = (keys) => keys.every((k) => checks[k] === true);
+    if (!ticked(APPLY_CHECKS) && !ticked(LEGACY_CHECKS)) return { error: 'Please tick both boxes before you submit.' };
     const r = body.resume || {};
     const buf = Buffer.from(String(r.data || ''), 'base64');
     if (!buf.length) return { error: 'Please attach your resume.' };

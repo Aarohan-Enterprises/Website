@@ -29,8 +29,8 @@ assert.ok(isGithubProfile('https://github.com/nikhil')); assert.ok(!isGithubProf
 assert.match(validate(app({ website: 'https://github.com/someone', resume: { data: pdf } })).error, /live website/);
 assert.match(validate(app({ video: '', resume: { data: pdf } })).error, /video/);
 // every box must be ticked
-assert.match(validate(app({ checks: { ...ALL, nagpur: false }, resume: { data: pdf } })).error, /every box/);
-assert.match(validate(app({ checks: undefined, resume: { data: pdf } })).error, /every box/);
+assert.match(validate(app({ checks: { ...ALL, nagpur: false }, resume: { data: pdf } })).error, /both boxes/);
+assert.match(validate(app({ checks: undefined, resume: { data: pdf } })).error, /both boxes/);
 assert.match(validate(app({ code: 'bad link', resume: { data: pdf } })).error, /source code/);
 assert.match(validate(app({ resume: { name: 'x.pdf', data: exe } })).error, /PDF or Word/);
 assert.match(validate(app({})).error, /attach/);

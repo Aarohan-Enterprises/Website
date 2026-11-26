@@ -71,12 +71,8 @@ export const siteChecklist = [
 
 /** Ticked on the form before submitting. Keys must match APPLY_CHECKS in forms-relay/index.mjs. */
 export const applyChecks: { key: string; label: string }[] = [
-  { key: 'nagpur', label: 'I live in Nagpur and can come to the office on office days.' },
-  { key: 'finalSem', label: 'I am in my final semester (or have just graduated) and can work full-time.' },
-  { key: 'site', label: 'My website is live and shows my projects, tech stack and accomplishments.' },
-  { key: 'video', label: 'My website has my AI-generated video, at least 2 minutes long.' },
-  { key: 'seo', label: 'My website shows my SEO scores and a short note on what I would fix.' },
-  { key: 'privacy', label: 'I agree to the Privacy Policy.' },
+  { key: 'nagpur', label: 'I live in Nagpur and can work full-time in my final semester.' },
+  { key: 'task', label: 'My website has my projects, my AI video (at least 2 minutes) and my SEO scores.' },
 ];
 
 export const processSteps = [

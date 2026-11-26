@@ -47,7 +47,7 @@ export function ApplyForm() {
       return;
     }
     if (!file) { setError('Please attach your resume.'); return; }
-    if (!allTicked) { setError('Please tick every box before you submit.'); return; }
+    if (!allTicked) { setError('Please tick both boxes before you submit.'); return; }
     if (!captcha) { setError('Please complete the "Verify you are human" check.'); return; }
     setBusy(true);
     const data = await fileToBase64(file).catch(() => '');
@@ -115,11 +115,7 @@ export function ApplyForm() {
           <label key={c.key} className="flex items-start gap-3 text-sm text-ink-soft">
             <input id={`apply-check-${c.key}`} type="checkbox" checked={!!checks[c.key]}
               onChange={(e) => setChecks({ ...checks, [c.key]: e.target.checked })} className="mt-0.5 h-4 w-4 shrink-0 accent-gold" />
-            <span>
-              {c.key === 'privacy' ? (
-                <>I agree to the <Link href="/privacy-policy" className="link-underline">Privacy Policy</Link>.</>
-              ) : c.label}
-            </span>
+            <span>{c.label}</span>
           </label>
         ))}
       </fieldset>
@@ -138,7 +134,10 @@ export function ApplyForm() {
       <button type="submit" disabled={busy || !ready} className="btn-primary w-full disabled:opacity-50">
         {busy ? (<><Loader2 size={16} className="animate-spin" /> Sending…</>) : (<>Submit application <ArrowRight size={15} /></>)}
       </button>
-      <p className="text-xs text-ink-faint">No other details needed; we take your name and contact from your resume.</p>
+      <p className="text-xs text-ink-faint">
+        By submitting, you agree to the <Link href="/privacy-policy" className="link-underline">Privacy Policy</Link>. No other
+        details needed; we take your name and contact from your resume.
+      </p>
     </form>
   );
 }
