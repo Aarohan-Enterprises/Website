@@ -17,7 +17,8 @@ export const MAX_RESUME_BYTES = 4 * 1024 * 1024;
 
 /** Every box on the careers form must be ticked; keys match src/data/careers.ts applyChecks. */
 export const APPLY_CHECKS = ['nagpur', 'task'];
-// TRANSITION ONLY: the six-box form still open in browsers. Remove once the two-box site is live.
+// The six-box form (live 25 Nov) is still accepted so a page opened before the 26 Nov switch can submit.
+// It was stricter than the two boxes, so this is safe; delete it any time after 27 Nov 2026.
 const LEGACY_CHECKS = ['nagpur', 'finalSem', 'site', 'video', 'seo', 'privacy'];
 const CAPTCHA_HOSTS = ['pinecoder.in', 'localhost'];
 

@@ -23,7 +23,7 @@ here. No secrets in this file — the repo is on GitHub.
 - **Bot protection (2026-11-25):** both forms carry a Cloudflare **Turnstile** token (widget "pinecoder.in forms",
   site key in `src/lib/forms.ts`, domains pinecoder.in + localhost; secret only in the Lambda env as `TURNSTILE_SECRET`,
   carried over by `deploy.sh` on every redeploy). The relay rejects any POST without a valid token. The careers form
-  also requires a video link and all six `applyChecks` boxes (keys shared with `APPLY_CHECKS` in the relay), and
+  also requires a video link and both `applyChecks` boxes (cut from six to two on 2026-11-26 at the owner's request) (keys shared with `APPLY_CHECKS` in the relay), and
   refuses a github.com profile/repo as the "website".
 - **Replying to applicants:** `python forms-relay/reply.py list` (site, video, resume email, replied?) and
   `python forms-relay/reply.py send <drafts.json> [--really]` (Zoho SMTP from contact@pinecoder.in, settings read from the
